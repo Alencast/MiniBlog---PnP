@@ -1,7 +1,8 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
@@ -17,200 +18,192 @@ const schema = yup.object().shape({
 });
 
 export default function FormCadastro() {
+	//estados
 	const [mostrarMensagemSucesso, setMostrarMensagemSucesso] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
+
 	const {
+		control,
 		handleSubmit,
-		register,
 		formState: { errors },
 		reset,
 	} = useForm({
 		resolver: yupResolver(schema),
 	});
 
+	//functions
 	function dataHandler(data: any) {
 		console.log(data);
+
 		setMostrarMensagemSucesso(true);
 		reset();
 	}
-	function fecharMensagem() {
-		setMostrarMensagemSucesso(false);
+
+	function ShowPassword() {
+		setShowPassword((prev) => !prev);
 	}
+
 	return (
 		<>
-			<div className="bg-gray-100 p-9 rounded-lg shadow-md max-w-md mx-auto">
-				<form
-					className="flex flex-col items-center"
-					onSubmit={handleSubmit(dataHandler)}
-				>
-					{mostrarMensagemSucesso && (
-						<div className="br-message success">
-							<div className="icon">
-								<i
-									className="fas fa-check-circle fa-lg"
-									aria-hidden="true"
-								></i>
-							</div>
-							<div
-								className="content"
-								aria-label="Sucesso. Seus dados foram alterados conforme preenchimento do formulário."
-								role="alert"
-							>
-								<span className="message-title">Sucesso.</span>
-								<span className="message-body">
-									{" "}
-									Seu cadastro foi concluído
-								</span>
-							</div>
-							<div className="close">
-								<button
-									className="br-button circle small"
-									type="button"
-									aria-label="Fechar a messagem alterta"
-									onClick={fecharMensagem}
-								>
-									<i
-										className="fas fa-times"
-										aria-hidden="true"
-									></i>
-								</button>
-							</div>
-						</div>
-					)}
+			<div className="min-h-screen flex items-center justify-center">
+				<BrCard className="w-full max-w-lg rounded-3xl overflow-hidden">
+					<form
+						className="flex flex-col items-center gap-4 w-full p-6"
+						onSubmit={handleSubmit(dataHandler)}
+					>
+						{mostrarMensagemSucesso && (
+							<BrMessage
+								title="sucesso"
+								message="Seu cadastro foi concluído"
+								status="success"
+								closable
+								inlineTitle
+							></BrMessage>
+						)}
 
-					<h1>Autocadastro</h1>
-					<div className="col-sm-6 col-lg-12 mb-3">
-						<div className="br-input">
-							<label htmlFor="usuario">Usuário</label>
-							<div className="input-group">
-								<div className="input-icon">
-									<i
-										className="fas fa-user-tie"
-										aria-hidden="true"
-									></i>
-								</div>
-								<input
-									id="usuario"
-									type="text"
+						<h1>Autocadastro</h1>
+
+						{/*Novos inputs */}
+
+						<Controller
+							name="usuario"
+							control={control}
+							render={({ field }) => (
+								<BrInput
+									className="w-full"
+									label="Usuário"
 									placeholder="Digite seu usuário"
-									{...register("usuario")}
+									icon="fas fa-user-tie"
+									value={field.value || ""}
+									onChange={(e) =>
+										field.onChange(e.target.value)
+									}
+									onBlur={field.onBlur}
+									status={
+										errors.usuario ? "danger" : undefined
+									}
+									feedbackText={errors.usuario?.message}
 								/>
-								{errors.usuario && (
-									<span className="bg-danger text-white p-2 rounded">
-										{errors.usuario.message}
-									</span>
-								)}
-							</div>
-						</div>
-					</div>
-					<div className="col-sm-6 col-lg-12 mb-3">
-						<div className="br-input">
-							<label htmlFor="nome">Nome</label>
-							<div className="input-group">
-								<div className="input-icon">
-									<i
-										className="fas fa-user-tie"
-										aria-hidden="true"
-									></i>
-								</div>
-								<input
-									id="nome"
-									type="text"
-									placeholder="Digite seu nome completo"
-									{...register("nome")}
-								/>
-								{errors.nome && (
-									<span className="bg-danger text-white p-2 rounded">
-										{errors.nome.message}
-									</span>
-								)}
-							</div>
-						</div>
-					</div>
-					<div className="col-sm-6 col-lg-12 mb-3">
-						<div className="br-input">
-							<label htmlFor="senha">Senha</label>
-							<div className="input-group">
-								<div className="input-icon">
-									<i
-										className="fas fa-lock"
-										aria-hidden="true"
-									></i>
-								</div>
-								<input
-									id="senha"
-									type="password"
-									placeholder="Digite sua senha"
-									{...register("senha")}
-								/>
-								<button
-									className="br-button"
-									type="button"
-									aria-label="Exibir senha"
-									role="switch"
-									aria-checked="false"
-								>
-									<i
-										className="fas fa-eye"
-										aria-hidden="true"
-									></i>
-								</button>
-							</div>
-							{errors.senha && (
-								<span className="bg-danger text-white p-2 rounded">
-									{errors.senha.message}
-								</span>
 							)}
-						</div>
-					</div>
-					<div className="col-sm-6 col-lg-12 mb-3">
-						<div className="br-input">
-							<label htmlFor="confirmacao_senha">
-								Confirmação de Senha
-							</label>
-							<div className="input-group">
-								<div className="input-icon">
-									<i
-										className="fas fa-lock"
-										aria-hidden="true"
-									></i>
-								</div>
-								<input
-									id="confirmacao_senha"
-									type="password"
-									placeholder="Digite sua senha novamente"
-									{...register("confirmacao_senha")}
-								/>
+						/>
 
-								<button
-									className="br-button"
-									type="button"
-									aria-label="Exibir senha"
-									role="switch"
-									aria-checked="false"
-								>
-									<i
-										className="fas fa-eye"
-										aria-hidden="true"
-									></i>
-								</button>
-							</div>
-							{errors.confirmacao_senha && (
-								<span className="bg-danger text-white p-2 rounded">
-									{errors.confirmacao_senha.message}
-								</span>
+						<Controller
+							name="nome"
+							control={control}
+							render={({ field }) => (
+								<BrInput
+									className="w-full"
+									label="Nome"
+									placeholder="Digite seu nome completo"
+									icon="fas fa-user"
+									value={field.value || ""}
+									onChange={(e) =>
+										field.onChange(e.target.value)
+									}
+									onBlur={field.onBlur}
+									status={errors.nome ? "danger" : undefined}
+									feedbackText={errors.nome?.message}
+								/>
 							)}
+						/>
+
+						<Controller
+							name="senha"
+							control={control}
+							render={({ field }) => (
+								<BrInput
+									className="w-full"
+									label="Senha"
+									placeholder="Digite sua senha"
+									icon="fas fa-lock"
+									type={showPassword ? "text" : "password"}
+									value={field.value || ""}
+									onChange={(e) =>
+										field.onChange(e.target.value)
+									}
+									onBlur={field.onBlur}
+									status={errors.senha ? "danger" : undefined}
+									feedbackText={errors.senha?.message}
+									button={
+										<button
+											className="br-button"
+											type="button"
+											aria-label="Exibir senha"
+											role="switch"
+											aria-checked="false"
+											onClick={ShowPassword}
+										>
+											<i
+												className={
+													showPassword
+														? "fas fa-eye"
+														: "fas fa-eye-slash"
+												}
+												aria-hidden="true"
+											></i>
+										</button>
+									}
+								/>
+							)}
+						/>
+
+						<Controller
+							name="confirmacao_senha"
+							control={control}
+							render={({ field }) => (
+								<BrInput
+									className="w-full"
+									label="Confirmação de Senha"
+									placeholder="Digite sua senha novamente"
+									icon="fas fa-lock"
+									type={showPassword ? "text" : "password"}
+									value={field.value || ""}
+									onChange={(e) =>
+										field.onChange(e.target.value)
+									}
+									onBlur={field.onBlur}
+									status={
+										errors.confirmacao_senha
+											? "danger"
+											: undefined
+									}
+									feedbackText={
+										errors.confirmacao_senha?.message
+									}
+									button={
+										<button
+											className="br-button"
+											type="button"
+											aria-label="Exibir senha"
+											role="switch"
+											aria-checked="false"
+											onClick={ShowPassword}
+										>
+											<i
+												className={
+													showPassword
+														? "fas fa-eye"
+														: "fas fa-eye-slash"
+												}
+												aria-hidden="true"
+											></i>
+										</button>
+									}
+								/>
+							)}
+						/>
+
+						<div className="p-3 w-full">
+							<button
+								className="br-button block primary mb-3"
+								type="button"
+								onClick={handleSubmit(dataHandler)}
+							>
+								Cadastrar
+							</button>
 						</div>
-					</div>
-					<div className="p-3 w-full">
-						<button
-							className="br-button block primary mb-3"
-							type="button"
-							onClick={handleSubmit(dataHandler)}
-						>
-							Cadastrar
-						</button>
-					</div>
-				</form>
+					</form>
+				</BrCard>
 			</div>
 		</>
 	);

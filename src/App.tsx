@@ -1,23 +1,35 @@
 // import { useState } from "react";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Header from "./pages/Header";
 import FormCadastro from "./features/autocadastro/forms/FormCadastro";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import bgImage from "./assets/bg.jpg";
+import Footer from "./pages/Footer";
+import Header from "./pages/Header";
 
 function App() {
-	// const [count, setCount] = useState(0);
-
 	return (
-		<BrowserRouter>
+		<>
 			<Header />
-			<Routes>
-				<Route
-					path="/"
-					element={<FormCadastro />}
-				/>
-			</Routes>
-		</BrowserRouter>
+			<BrowserRouter>
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<div
+								className="min-h-screen md:grid-cols-1 items-center justify-center bg-cover bg-center"
+								style={{
+									backgroundImage: `url(${bgImage})`,
+								}}
+							>
+								<FormCadastro />
+							</div>
+						}
+					/>
+				</Routes>
+			</BrowserRouter>
+			<Footer />
+		</>
 	);
 }
 
