@@ -168,7 +168,6 @@ export default function FormCadastro() {
 								Confirmação de Senha
 							</label>
 							<div className="input-group">
-								{/* Ícone de cadeado à esquerda */}
 								<div className="input-icon">
 									<i
 										className="fas fa-lock"
@@ -181,7 +180,7 @@ export default function FormCadastro() {
 									placeholder="Digite sua senha novamente"
 									{...register("confirmacao_senha")}
 								/>
-								{/* Botão para exibir/ocultar senha à direita */}
+
 								<button
 									className="br-button"
 									type="button"
