@@ -84,61 +84,79 @@ export default function FormCadastro() {
 						</div>
 					</div>
 					<div className="col-sm-6 col-lg-12 mb-3">
-						<div className="br-input input-button">
-							<label htmlFor="input-password">Senha</label>
-							<input
-								id="senha"
-								type="password"
-								placeholder="Digite sua senha"
-								{...register("senha")}
-							/>
+						<div className="br-input">
+							<label htmlFor="senha">Senha</label>
+							<div className="input-group">
+								<div className="input-icon">
+									<i
+										className="fas fa-lock"
+										aria-hidden="true"
+									></i>
+								</div>
+								<input
+									id="senha"
+									type="password"
+									placeholder="Digite sua senha"
+									{...register("senha")}
+								/>
+								<button
+									className="br-button"
+									type="button"
+									aria-label="Exibir senha"
+									role="switch"
+									aria-checked="false"
+								>
+									<i
+										className="fas fa-eye"
+										aria-hidden="true"
+									></i>
+								</button>
+							</div>
 							{errors.senha && (
 								<span className="bg-danger text-white p-2 rounded">
 									{errors.senha.message}
 								</span>
 							)}
-							<button
-								className="br-button"
-								type="button"
-								aria-label="Exibir senha"
-								role="switch"
-								aria-checked="false"
-							>
-								<i
-									className="fas fa-eye"
-									aria-hidden="true"
-								></i>
-							</button>
 						</div>
 					</div>
 					<div className="col-sm-6 col-lg-12 mb-3">
-						<div className="br-input input-button">
+						<div className="br-input">
 							<label htmlFor="confirmacao_senha">
 								Confirmação de Senha
 							</label>
-							<input
-								id="confirmacao_senha"
-								type="password"
-								placeholder="Digite sua senha novamente"
-								{...register("confirmacao_senha")}
-							/>
+							<div className="input-group">
+								{/* Ícone de cadeado à esquerda */}
+								<div className="input-icon">
+									<i
+										className="fas fa-lock"
+										aria-hidden="true"
+									></i>
+								</div>
+								<input
+									id="confirmacao_senha"
+									type="password"
+									placeholder="Digite sua senha novamente"
+									{...register("confirmacao_senha")}
+								/>
+								{/* Botão para exibir/ocultar senha à direita */}
+								<button
+									className="br-button"
+									type="button"
+									aria-label="Exibir senha"
+									role="switch"
+									aria-checked="false"
+								>
+									<i
+										className="fas fa-eye"
+										aria-hidden="true"
+									></i>
+								</button>
+							</div>
 							{errors.confirmacao_senha && (
 								<span className="bg-danger text-white p-2 rounded">
 									{errors.confirmacao_senha.message}
 								</span>
 							)}
-							<button
-								className="br-button"
-								type="button"
-								aria-label="Exibir senha"
-								role="switch"
-								aria-checked="false"
-							>
-								<i
-									className="fas fa-eye"
-									aria-hidden="true"
-								></i>
-							</button>
 						</div>
 					</div>
 					<div className="p-3 w-full">
