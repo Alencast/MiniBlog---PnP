@@ -1,0 +1,136 @@
+import { BrFooter } from "@govbr-ds/react-components";
+
+export default function Footer() {
+	return (
+		<BrFooter
+			links={[
+				{
+					category: "Categoria 1",
+					items: [
+						{
+							label: "Ad deserunt nostrud",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+					],
+				},
+				{
+					category: "Categoria 2",
+					items: [
+						{
+							label: "Ex qui laborum consectetur aute commodo",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+						{
+							label: "Ex qui laborum consectetur aute commodo",
+							link: "#",
+						},
+					],
+				},
+				{
+					category: "Categoria 3",
+					items: [
+						{
+							label: "Ad deserunt nostrud",
+							link: "#",
+						},
+						{
+							label: "Ex qui laborum consectetur aute commodo",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+					],
+				},
+				{
+					category: "Categoria 4",
+					items: [
+						{
+							label: "Ad deserunt nostrud",
+							link: "#",
+						},
+						{
+							label: "Ex qui laborum consectetur aute commodo",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+					],
+				},
+				{
+					category: "Categoria 5",
+					items: [
+						{
+							label: "Ex qui laborum consectetur aute commodo",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+					],
+				},
+				{
+					category: "Categoria 6",
+					items: [
+						{
+							label: "Ex qui laborum consectetur aute commodo",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+						{
+							label: "Nulla occaecat eiusmod",
+							link: "#",
+						},
+					],
+				},
+			]}
+			socialNetworks={[
+				{
+					icon: "fab fa-facebook-square",
+					link: "#",
+					name: "Facebook",
+				},
+				{
+					icon: "fab fa-twitter-square",
+					link: "#",
+					name: "Twitter",
+				},
+				{
+					icon: "fab fa-linkedin",
+					link: "#",
+					name: "Linkedin",
+				},
+			]}
+			urlLogo="https://www.gov.br/ds/assets/img/govbr-logo.png"
+			userLicenseText={
+				<>
+					Texto destinado a exibição de informações relacionadas à 
+					<b>licença de uso.</b>
+				</>
+			}
+		/>
+	);
+}
