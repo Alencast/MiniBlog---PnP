@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
@@ -16,16 +17,23 @@ const schema = yup.object().shape({
 });
 
 export default function FormCadastro() {
+	const [mostrarMensagemSucesso, setMostrarMensagemSucesso] = useState(false);
 	const {
 		handleSubmit,
 		register,
 		formState: { errors },
+		reset,
 	} = useForm({
 		resolver: yupResolver(schema),
 	});
 
 	function dataHandler(data: any) {
 		console.log(data);
+		setMostrarMensagemSucesso(true);
+		reset();
+	}
+	function fecharMensagem() {
+		setMostrarMensagemSucesso(false);
 	}
 	return (
 		<>
@@ -34,6 +42,41 @@ export default function FormCadastro() {
 					className="flex flex-col items-center"
 					onSubmit={handleSubmit(dataHandler)}
 				>
+					{mostrarMensagemSucesso && (
+						<div className="br-message success">
+							<div className="icon">
+								<i
+									className="fas fa-check-circle fa-lg"
+									aria-hidden="true"
+								></i>
+							</div>
+							<div
+								className="content"
+								aria-label="Sucesso. Seus dados foram alterados conforme preenchimento do formulário."
+								role="alert"
+							>
+								<span className="message-title">Sucesso.</span>
+								<span className="message-body">
+									{" "}
+									Seu cadastro foi concluído
+								</span>
+							</div>
+							<div className="close">
+								<button
+									className="br-button circle small"
+									type="button"
+									aria-label="Fechar a messagem alterta"
+									onClick={fecharMensagem}
+								>
+									<i
+										className="fas fa-times"
+										aria-hidden="true"
+									></i>
+								</button>
+							</div>
+						</div>
+					)}
+
 					<h1>Autocadastro</h1>
 					<div className="col-sm-6 col-lg-12 mb-3">
 						<div className="br-input">
