@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
+import CadastroService from "../../../services/models/cadastroService";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
@@ -20,6 +21,7 @@ const schema = yup.object().shape({
 export default function FormCadastro() {
 	//estados
 	const [mostrarMensagemSucesso, setMostrarMensagemSucesso] = useState(false);
+	// const [mostrarMensagem, setMostrarMensagemSucesso] = useState({});
 	const [showPassword, setShowPassword] = useState(false);
 
 	const {
@@ -32,11 +34,25 @@ export default function FormCadastro() {
 	});
 
 	//functions
-	function dataHandler(data: any) {
-		console.log(data);
+	async function dataHandler(data: any) {
+		try {
+			const payload = {
+				username: data.usuario,
+				nome: data.nome,
+				senha: data.senha,
+			};
+			await CadastroService.cadastrarUsuario(
+				payload.username,
+				payload.nome,
+				payload.senha,
+			);
 
-		setMostrarMensagemSucesso(true);
-		reset();
+			setMostrarMensagemSucesso(true);
+			reset();
+			console.log(data);
+		} catch (error: any) {
+			console.log("ERRO BACKEND:", error.response?.data);
+		}
 	}
 
 	function ShowPassword() {
