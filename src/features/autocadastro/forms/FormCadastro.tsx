@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
-import CadastroService from "../../../services/models/cadastroService";
+import CadastroService from "../../../services/models/CadastroService";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
