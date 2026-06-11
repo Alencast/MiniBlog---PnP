@@ -2,56 +2,53 @@ import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
-import CadastroService from "../../../services/models/CadastroService";
+import { BrInput, BrCard } from "@govbr-ds/react-components";
+import Ratinho from "../../../assets/Ratinho.jpg";
+import LoginService from "../../../services/models/LoginService";
+import { isAuthenticated } from "../../../routes/auth";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
-	nome: yup.string().required("O nome é obrigatório"),
 	usuario: yup.string().required("O usuário é obrigatório"), //lembrar da verificação de usuario único
 	senha: yup
 		.string()
 		.required("A senha é obrigatória")
 		.min(6, "A senha deve ter pelo menos 6 caracteres"),
-	confirmacao_senha: yup
-		.string()
-		.required("A confirmação de senha é obrigatória")
-		.oneOf([yup.ref("senha")], "As senhas não coincidem"),
 });
 
-export default function FormCadastro() {
-	//estados
-	const [mostrarMensagemSucesso, setMostrarMensagemSucesso] = useState(false);
-	// const [mostrarMensagem, setMostrarMensagemSucesso] = useState({});
+export default function FormLogin() {
 	const [showPassword, setShowPassword] = useState(false);
+	const navigate = useNavigate();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-		reset,
 	} = useForm({
 		resolver: yupResolver(schema),
 	});
 
 	//functions
+	function testeAuth() {
+		if (isAuthenticated()) {
+			console.log("Usuário autenticado");
+		}
+	}
 	async function dataHandler(data: any) {
+		console.log(data);
+
 		try {
 			const payload = {
 				username: data.usuario,
-				nome: data.nome,
-				senha: data.senha,
+				password: data.senha,
 			};
-			await CadastroService.cadastrarUsuario(
-				payload.username,
-				payload.nome,
-				payload.senha,
-			);
 
-			setMostrarMensagemSucesso(true);
-			reset();
-			console.log(data);
+			await LoginService.logarUsuario(payload.username, payload.password);
+
+			navigate("/home");
 		} catch (error: any) {
-			console.log("ERRO BACKEND:", error.response?.data);
+			console.log(error);
 		}
 	}
 
@@ -67,17 +64,7 @@ export default function FormCadastro() {
 						className="flex flex-col items-center gap-4 w-full p-6"
 						onSubmit={handleSubmit(dataHandler)}
 					>
-						{mostrarMensagemSucesso && (
-							<BrMessage
-								title="sucesso"
-								message="Seu cadastro foi concluído"
-								status="success"
-								closable
-								inlineTitle
-							></BrMessage>
-						)}
-
-						<h1>Autocadastro</h1>
+						<h1>Login</h1>
 
 						{/*Novos inputs */}
 
@@ -99,26 +86,6 @@ export default function FormCadastro() {
 										errors.usuario ? "danger" : undefined
 									}
 									feedbackText={errors.usuario?.message}
-								/>
-							)}
-						/>
-
-						<Controller
-							name="nome"
-							control={control}
-							render={({ field }) => (
-								<BrInput
-									className="w-full"
-									label="Nome"
-									placeholder="Digite seu nome completo"
-									icon="fas fa-user"
-									value={field.value || ""}
-									onChange={(e) =>
-										field.onChange(e.target.value)
-									}
-									onBlur={field.onBlur}
-									status={errors.nome ? "danger" : undefined}
-									feedbackText={errors.nome?.message}
 								/>
 							)}
 						/>
@@ -163,68 +130,38 @@ export default function FormCadastro() {
 							)}
 						/>
 
-						<Controller
-							name="confirmacao_senha"
-							control={control}
-							render={({ field }) => (
-								<BrInput
-									className="w-full"
-									label="Confirmação de Senha"
-									placeholder="Digite sua senha novamente"
-									icon="fas fa-lock"
-									type={showPassword ? "text" : "password"}
-									value={field.value || ""}
-									onChange={(e) =>
-										field.onChange(e.target.value)
-									}
-									onBlur={field.onBlur}
-									status={
-										errors.confirmacao_senha
-											? "danger"
-											: undefined
-									}
-									feedbackText={
-										errors.confirmacao_senha?.message
-									}
-									button={
-										<button
-											className="br-button"
-											type="button"
-											aria-label="Exibir senha"
-											role="switch"
-											aria-checked="false"
-											onClick={ShowPassword}
-										>
-											<i
-												className={
-													showPassword
-														? "fas fa-eye"
-														: "fas fa-eye-slash"
-												}
-												aria-hidden="true"
-											></i>
-										</button>
-									}
-								/>
-							)}
-						/>
-
 						<div className="p-3 w-full">
 							<button
 								className="br-button block primary mb-3"
 								type="button"
 								onClick={handleSubmit(dataHandler)}
 							>
-								Cadastrar
+								Login
 							</button>
 
-							<a
-								className="br-link"
-								href="/login"
-							>
-								Já possui conta? Faça login
-							</a>
+							<div className="flex items-center gap-2 mb-3">
+								<a
+									className="br-link"
+									href="/cadastro"
+								>
+									Não possui conta? Crie agora
+								</a>
+								<button
+									className="br-sign-in"
+									type="button"
+									onClick={() =>
+										window.open(Ratinho, "_blank")
+									}
+								>
+									Entrar com&nbsp;
+									<img
+										src="https://www.gov.br/++theme++padrao_govbr/img/govbr-colorido-b.png"
+										alt="gov.br"
+									/>
+								</button>
+							</div>
 						</div>
+						<button onClick={testeAuth}>Testar Autenticação</button>
 					</form>
 				</BrCard>
 			</div>
