@@ -6,8 +6,9 @@ import { BrInput, BrCard } from "@govbr-ds/react-components";
 import Ratinho from "../../../assets/Ratinho.jpg";
 import LoginService from "../../../services/models/LoginService";
 import { isAuthenticated } from "../../../routes/auth";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Header from "../../../pages/Header";
+import Footer from "../../../pages/Footer";
 
 const schema = yup.object().shape({
 	usuario: yup.string().required("O usuário é obrigatório"), //lembrar da verificação de usuario único
@@ -58,6 +59,7 @@ export default function FormLogin() {
 
 	return (
 		<>
+			<Header />
 			<div className="min-h-screen flex items-center justify-center">
 				<BrCard className="w-full max-w-lg rounded-3xl overflow-hidden">
 					<form
@@ -165,6 +167,7 @@ export default function FormLogin() {
 					</form>
 				</BrCard>
 			</div>
+			<Footer />
 		</>
 	);
 }

@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
 import CadastroService from "../../../services/models/CadastroService";
+import Footer from "../../../pages/Footer";
+import Header from "../../../pages/Header";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
@@ -19,9 +21,13 @@ const schema = yup.object().shape({
 });
 
 export default function FormCadastro() {
-	//estados
-	const [mostrarMensagemSucesso, setMostrarMensagemSucesso] = useState(false);
-	// const [mostrarMensagem, setMostrarMensagemSucesso] = useState({});
+	const [mostrarMensagem, setMostrarMensagem] = useState(false);
+	const [statusMensagem, setStatusMensagem] = useState<"success" | "danger">(
+		"success",
+	);
+	const [tituloMensagem, setTituloMensagem] = useState("");
+	const [textoMensagem, setTextoMensagem] = useState("");
+
 	const [showPassword, setShowPassword] = useState(false);
 
 	const {
@@ -46,12 +52,21 @@ export default function FormCadastro() {
 				payload.nome,
 				payload.senha,
 			);
-
-			setMostrarMensagemSucesso(true);
+			setTituloMensagem("Sucesso.");
+			setStatusMensagem("success");
+			setTextoMensagem("Seu cadastro foi concluído");
+			setMostrarMensagem(true);
 			reset();
 			console.log(data);
-		} catch (error: any) {
-			console.log("ERRO BACKEND:", error.response?.data);
+		} catch (error) {
+			setMostrarMensagem(false);
+
+			setTimeout(() => {
+				setTituloMensagem("Erro.");
+				setStatusMensagem("danger");
+				setTextoMensagem("Usuário já cadastrado");
+				setMostrarMensagem(true);
+			}, 5);
 		}
 	}
 
@@ -61,17 +76,18 @@ export default function FormCadastro() {
 
 	return (
 		<>
+			<Header />
 			<div className="min-h-screen flex items-center justify-center">
 				<BrCard className="w-full max-w-lg rounded-3xl overflow-hidden">
 					<form
 						className="flex flex-col items-center gap-4 w-full p-6"
 						onSubmit={handleSubmit(dataHandler)}
 					>
-						{mostrarMensagemSucesso && (
+						{mostrarMensagem && (
 							<BrMessage
-								title="sucesso"
-								message="Seu cadastro foi concluído"
-								status="success"
+								title={tituloMensagem}
+								message={textoMensagem}
+								status={statusMensagem}
 								closable
 								inlineTitle
 							></BrMessage>
@@ -228,6 +244,7 @@ export default function FormCadastro() {
 					</form>
 				</BrCard>
 			</div>
+			<Footer />
 		</>
 	);
 }
