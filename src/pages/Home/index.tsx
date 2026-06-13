@@ -86,6 +86,14 @@ export default function Home() {
 											onChange={(e) =>
 												field.onChange(e.target.value)
 											}
+											status={
+												errors.descricao
+													? "danger"
+													: undefined
+											}
+											feedbackText={
+												errors.descricao?.message
+											}
 										/>
 									)}
 								/>
