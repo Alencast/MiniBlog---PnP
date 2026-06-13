@@ -3,11 +3,12 @@ import { BrTextarea, BrButton, BrInput } from "@govbr-ds/react-components";
 import Header from "../Header";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import PublicarService from "../../services/models/PublicarService";
 
 const schema = yup.object().shape({
 	titulo: yup.string().required("Título é obrigatório"),
 	descricao: yup.string().required("Descrição é obrigatória"),
-	imagemURL: yup.string().url("URL da imagem inválida"),
+	imagemURL: yup.mixed(),
 });
 export default function Home() {
 	const {
@@ -19,7 +20,22 @@ export default function Home() {
 	});
 
 	async function dataHandler(data: any) {
-		console.log(data);
+		try {
+			const payload = {
+				titulo: data.titulo,
+				descricao: data.descricao,
+				imagem: data.imagemURL,
+			};
+			await PublicarService.publicar(
+				payload.titulo,
+				payload.descricao,
+				payload.imagem,
+			);
+
+			console.log(payload);
+		} catch (error) {
+			console.error("Erro ao publicar:", error);
+		}
 	}
 	return (
 		<>
@@ -78,24 +94,25 @@ export default function Home() {
 									name="imagemURL"
 									control={control}
 									render={({ field }) => (
-										<BrInput
-											className="w-full"
-											label=""
-											placeholder="Cole a URL da imagem"
-											icon="fas fa-image"
-											value={field.value || ""}
-											onChange={(e) =>
-												field.onChange(e.target.value)
-											}
-											status={
-												errors.imagemURL
-													? "danger"
-													: undefined
-											}
-											feedbackText={
-												errors.imagemURL?.message
-											}
-										/>
+										<div className="p-4 border border-slate-200 rounded-xl bg-slate-50">
+											<BrInput
+												className="w-full"
+												label="Imagem"
+												type="file"
+												accept="image/*"
+												icon="fas fa-image"
+												onChange={(e) =>
+													field.onChange(
+														e.target.files?.[0],
+													)
+												}
+												status={
+													errors.imagemURL
+														? "danger"
+														: undefined
+												}
+											/>
+										</div>
 									)}
 								/>
 
