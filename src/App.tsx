@@ -7,6 +7,8 @@ import bgImage from "./assets/bg.jpg";
 import FormLogin from "./features/autocadastro/forms/FormLogin";
 import Home from "./pages/Home";
 import PrivateRoute from "./routes/PrivateRoute";
+import DomeGallery from "./components/DomeGallery";
+import Header from "./pages/Header";
 
 function App() {
 	return (
@@ -21,28 +23,36 @@ function App() {
 						/>
 					}
 				/>
-
 				<Route
 					path="/login"
 					element={
-						<div
-							className="min-h-screen md:grid-cols-1 items-center justify-center bg-cover bg-center"
-							style={{ backgroundImage: `url(${bgImage})` }}
-						>
-							<FormLogin />
-						</div>
+						<>
+							<div className="absolute inset-0">
+								<DomeGallery />
+							</div>
+
+							<div className="absolute inset-0 pointer-events-none flex items-center justify-center z-10">
+								<div className="pointer-events-auto">
+									<FormLogin />
+								</div>
+							</div>
+						</>
 					}
 				/>
-
 				<Route
 					path="/cadastro"
 					element={
-						<div
-							className="min-h-screen md:grid-cols-1 items-center justify-center bg-cover bg-center"
-							style={{ backgroundImage: `url(${bgImage})` }}
-						>
-							<FormCadastro />
-						</div>
+						<>
+							<div className="absolute inset-0">
+								<DomeGallery />
+							</div>
+
+							<div className="absolute inset-0 pointer-events-none flex items-center justify-center z-10">
+								<div className="pointer-events-auto">
+									<FormCadastro />
+								</div>
+							</div>
+						</>
 					}
 				/>
 

@@ -76,7 +76,6 @@ export default function FormCadastro() {
 
 	return (
 		<>
-			<Header />
 			<div className="min-h-screen flex items-center justify-center">
 				<BrCard className="w-full max-w-lg rounded-3xl overflow-hidden">
 					<form
@@ -244,7 +243,6 @@ export default function FormCadastro() {
 					</form>
 				</BrCard>
 			</div>
-			<Footer />
 		</>
 	);
 }
