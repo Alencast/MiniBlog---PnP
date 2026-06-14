@@ -6,7 +6,6 @@ import { BrInput, BrCard } from "@govbr-ds/react-components";
 import Ratinho from "../../../assets/Ratinho.jpg";
 import LoginService from "../../../services/models/LoginService";
 import { isAuthenticated } from "../../../routes/auth";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
@@ -58,13 +57,22 @@ export default function FormLogin() {
 
 	return (
 		<>
+			{" "}
 			<div className="min-h-screen flex items-center justify-center">
 				<BrCard className="w-full max-w-lg rounded-3xl overflow-hidden">
 					<form
 						className="flex flex-col items-center gap-4 w-full p-6"
 						onSubmit={handleSubmit(dataHandler)}
 					>
-						<h1>Login</h1>
+						<h1
+							className="text-center font-bold text-white leading-none"
+							style={{
+								fontFamily: "'Caveat', cursive",
+								fontSize: "80px",
+							}}
+						>
+							MiniBlog
+						</h1>
 
 						{/*Novos inputs */}
 
@@ -161,7 +169,6 @@ export default function FormLogin() {
 								</button>
 							</div>
 						</div>
-						<button onClick={testeAuth}>Testar Autenticação</button>
 					</form>
 				</BrCard>
 			</div>

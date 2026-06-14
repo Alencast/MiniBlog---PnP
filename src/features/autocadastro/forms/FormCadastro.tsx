@@ -19,9 +19,13 @@ const schema = yup.object().shape({
 });
 
 export default function FormCadastro() {
-	//estados
-	const [mostrarMensagemSucesso, setMostrarMensagemSucesso] = useState(false);
-	// const [mostrarMensagem, setMostrarMensagemSucesso] = useState({});
+	const [mostrarMensagem, setMostrarMensagem] = useState(false);
+	const [statusMensagem, setStatusMensagem] = useState<"success" | "danger">(
+		"success",
+	);
+	const [tituloMensagem, setTituloMensagem] = useState("");
+	const [textoMensagem, setTextoMensagem] = useState("");
+
 	const [showPassword, setShowPassword] = useState(false);
 
 	const {
@@ -46,12 +50,29 @@ export default function FormCadastro() {
 				payload.nome,
 				payload.senha,
 			);
-
-			setMostrarMensagemSucesso(true);
+			setTituloMensagem("Sucesso.");
+			setStatusMensagem("success");
+			setTextoMensagem("Seu cadastro foi concluído");
+			setMostrarMensagem(true);
 			reset();
+
+			localStorage.setItem(
+				"usuario",
+				JSON.stringify({
+					nome: payload.nome,
+					username: payload.username,
+				}),
+			);
 			console.log(data);
-		} catch (error: any) {
-			console.log("ERRO BACKEND:", error.response?.data);
+		} catch (error) {
+			setMostrarMensagem(false);
+
+			setTimeout(() => {
+				setTituloMensagem("Erro.");
+				setStatusMensagem("danger");
+				setTextoMensagem("Usuário já cadastrado");
+				setMostrarMensagem(true);
+			}, 5);
 		}
 	}
 
@@ -67,17 +88,25 @@ export default function FormCadastro() {
 						className="flex flex-col items-center gap-4 w-full p-6"
 						onSubmit={handleSubmit(dataHandler)}
 					>
-						{mostrarMensagemSucesso && (
+						{mostrarMensagem && (
 							<BrMessage
-								title="sucesso"
-								message="Seu cadastro foi concluído"
-								status="success"
+								title={tituloMensagem}
+								message={textoMensagem}
+								status={statusMensagem}
 								closable
 								inlineTitle
 							></BrMessage>
 						)}
 
-						<h1>Autocadastro</h1>
+						<h1
+							className="text-center font-bold text-white leading-none"
+							style={{
+								fontFamily: "'Caveat', cursive",
+								fontSize: "80px",
+							}}
+						>
+							MiniBlog
+						</h1>
 
 						{/*Novos inputs */}
 
