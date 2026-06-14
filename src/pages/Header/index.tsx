@@ -1,14 +1,15 @@
 import { BrHeader } from "@govbr-ds/react-components";
+import logo from "../../assets/logo.jpg";
 
 export default function Header() {
 	return (
 		<BrHeader
 			menuId="main-navigation"
-			title="Portal de Cadastro"
-			signature="Sistema de Autocadastro"
-			subTitle="Versão 1.0"
-			urlLogo="https://www.gov.br/ds/assets/img/govbr-logo.png"
-			showSearchBar={false}
+			title=""
+			signature=""
+			subTitle=""
+			urlLogo={logo}
+			showSearchBar={true}
 			showMenuButton={false}
 			quickAccessLinks={[
 				{
@@ -26,18 +27,18 @@ export default function Header() {
 			]}
 			features={[
 				{
-					icon: "user-plus",
-					label: "Cadastro",
+					icon: "newspaper",
+					label: "Publicações",
 					onClick: () => {},
 				},
 				{
-					icon: "shield-alt",
-					label: "Segurança",
+					icon: "comments",
+					label: "Comunidade",
 					onClick: () => {},
 				},
 				{
-					icon: "question-circle",
-					label: "Suporte",
+					icon: "rss",
+					label: "Novidades",
 					onClick: () => {},
 				},
 			]}

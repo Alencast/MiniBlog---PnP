@@ -7,8 +7,6 @@ import Ratinho from "../../../assets/Ratinho.jpg";
 import LoginService from "../../../services/models/LoginService";
 import { isAuthenticated } from "../../../routes/auth";
 import { useNavigate } from "react-router-dom";
-import Header from "../../../pages/Header";
-import Footer from "../../../pages/Footer";
 
 const schema = yup.object().shape({
 	usuario: yup.string().required("O usuário é obrigatório"), //lembrar da verificação de usuario único
@@ -171,7 +169,6 @@ export default function FormLogin() {
 								</button>
 							</div>
 						</div>
-						<button onClick={testeAuth}>Testar Autenticação</button>
 					</form>
 				</BrCard>
 			</div>

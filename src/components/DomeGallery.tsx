@@ -7,6 +7,7 @@ import img4 from "../assets/4.jpg";
 import img5 from "../assets/5.jpg";
 import img6 from "../assets/6.jpg";
 import img7 from "../assets/7.jpg";
+import img8 from "../assets/8.jpg";
 
 type ImageItem = string | { src: string; alt?: string };
 
@@ -67,6 +68,10 @@ const DEFAULT_IMAGES: ImageItem[] = [
 	{
 		src: img7,
 		alt: "Social media image",
+	},
+	{
+		src: img8,
+		alt: "praia",
 	},
 ];
 

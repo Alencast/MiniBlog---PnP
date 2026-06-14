@@ -4,8 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
 import CadastroService from "../../../services/models/CadastroService";
-import Footer from "../../../pages/Footer";
-import Header from "../../../pages/Header";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
@@ -57,6 +55,14 @@ export default function FormCadastro() {
 			setTextoMensagem("Seu cadastro foi concluído");
 			setMostrarMensagem(true);
 			reset();
+
+			localStorage.setItem(
+				"usuario",
+				JSON.stringify({
+					nome: payload.nome,
+					username: payload.username,
+				}),
+			);
 			console.log(data);
 		} catch (error) {
 			setMostrarMensagem(false);
@@ -92,7 +98,15 @@ export default function FormCadastro() {
 							></BrMessage>
 						)}
 
-						<h1>Autocadastro</h1>
+						<h1
+							className="text-center font-bold text-white leading-none"
+							style={{
+								fontFamily: "'Caveat', cursive",
+								fontSize: "80px",
+							}}
+						>
+							MiniBlog
+						</h1>
 
 						{/*Novos inputs */}
 
