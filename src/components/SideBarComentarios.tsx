@@ -23,6 +23,9 @@ export default function SideBarComentarios() {
 	function adicionarComentario(novoComentario: string) {
 		setComentarios([...comentarios, novoComentario]);
 	}
+	const usuario = localStorage.getItem("usuario");
+
+	const nomeUsuario = usuario ? JSON.parse(usuario).nome : "Usuário";
 
 	async function dataHandler(data: any) {
 		adicionarComentario(data.comentario);
@@ -30,7 +33,7 @@ export default function SideBarComentarios() {
 		console.log(data);
 	}
 	return (
-		<div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6  h-[700px] flex flex-col">
+		<div className="w-[500px] bg-white rounded-2xl shadow-lg border border-slate-200 p-6 h-[700px] flex flex-col">
 			<div className="font-bold mb-4">Comentários</div>
 
 			<div className="flex-1 overflow-y-auto">
@@ -38,6 +41,7 @@ export default function SideBarComentarios() {
 					<CardComentario
 						key={index}
 						mensagem={comentario}
+						autor={nomeUsuario}
 					/>
 				))}
 			</div>

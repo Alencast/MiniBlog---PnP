@@ -1,10 +1,12 @@
-import type { Post } from "../pages/Home/index";
-
 type CardComentarioProps = {
 	mensagem: string;
+	autor: string;
 };
 
-export default function CardComentario({ mensagem }: CardComentarioProps) {
+export default function CardComentario({
+	mensagem,
+	autor,
+}: CardComentarioProps) {
 	return (
 		<div className="mt-5">
 			<div className="br-card">
@@ -12,7 +14,7 @@ export default function CardComentario({ mensagem }: CardComentarioProps) {
 					<div className="d-flex">
 						<span
 							className="br-avatar mt-1"
-							title="Fulano da Silva"
+							title={autor}
 						>
 							<span className="content">
 								<img src="https://picsum.photos/id/823/400" />
@@ -21,15 +23,13 @@ export default function CardComentario({ mensagem }: CardComentarioProps) {
 
 						<div className="ml-3">
 							<div className="text-weight-semi-bold text-up-02">
-								Maria Amorim
+								{autor}
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div className="card-content">
-					<p>{mensagem}</p>
-				</div>
+				<p className="break-words whitespace-pre-wrap">{mensagem}</p>
 			</div>
 		</div>
 	);
