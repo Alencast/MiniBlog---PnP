@@ -9,6 +9,7 @@ export default function Header() {
 			signature=""
 			subTitle=""
 			urlLogo={logo}
+			showLoginButton={false}
 			showSearchBar={true}
 			showMenuButton={false}
 			quickAccessLinks={[
