@@ -3,12 +3,10 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import FormCadastro from "./features/autocadastro/forms/FormCadastro";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import bgImage from "./assets/bg.jpg";
 import FormLogin from "./features/autocadastro/forms/FormLogin";
 import Home from "./pages/Home";
 import PrivateRoute from "./routes/PrivateRoute";
 import DomeGallery from "./components/DomeGallery";
-import Header from "./pages/Header";
 
 function App() {
 	return (

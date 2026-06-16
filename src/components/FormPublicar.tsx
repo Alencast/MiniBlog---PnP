@@ -3,12 +3,7 @@ import { BrTextarea, BrButton, BrInput } from "@govbr-ds/react-components";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PublicarService from "../services/models/PublicarService";
-
-type Post = {
-	titulo: string;
-	descricao: string;
-	imagem?: File;
-};
+import type { Post } from "../pages/Home/index";
 
 type FormPublicarProps = {
 	onPublicar: (post: Post) => void;
@@ -36,14 +31,13 @@ export default function FormPublicar({ onPublicar }: FormPublicarProps) {
 				imagem: data.imagemURL,
 			};
 
-			await PublicarService.publicar(
+			const novoPost = await PublicarService.publicar(
 				payload.titulo,
 				payload.descricao,
 				payload.imagem,
 			);
-			onPublicar(payload);
 
-			console.log(payload);
+			onPublicar(novoPost.data);
 		} catch (error) {
 			console.error("Erro ao publicar:", error);
 		}

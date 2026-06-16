@@ -1,13 +1,34 @@
-import Header from "../Header";
+import { useState } from "react";
 import CardPost from "../../components/CardPost";
 import FormPublicar from "../../components/FormPublicar";
-import { useState } from "react";
+import Header from "../Header";
 
-type Post = {
+type Comentario = {
+	id: number;
+	texto: string;
+	autor: string;
+};
+
+export type Autor = {
+	id: number;
+	username: string;
+	nome: string;
+};
+
+export type Post = {
+	id: number;
 	titulo: string;
 	descricao: string;
-	imagem?: File;
+	imagem?: string;
+	autor: Autor;
+	publicado_em: string;
 };
+
+// export type CriarPostDTO = {
+// 	titulo: string;
+// 	descricao: string;
+// 	imagem?: File;
+// };
 
 export default function Home() {
 	const [posts, setPosts] = useState<Post[]>([]);
@@ -23,12 +44,10 @@ export default function Home() {
 				<div className="max-w-2xl mx-auto">
 					<FormPublicar onPublicar={adicionarPost} />
 
-					{posts.map((post, index) => (
+					{posts.map((post) => (
 						<CardPost
-							key={index}
-							titulo={post.titulo}
-							descricao={post.descricao}
-							imagem={post.imagem}
+							key={post.id}
+							post={post}
 						/>
 					))}
 				</div>
