@@ -6,7 +6,10 @@ import CardComentario from "./CardComentario";
 import { useState } from "react";
 
 const schema = yup.object().shape({
-	comentario: yup.string().required("O comentário é obrigatório"),
+	comentario: yup
+		.string()
+		.required("O comentário é obrigatório")
+		.max(200, "O comentário não pode ter mais de 200 caracteres"),
 });
 export default function SideBarComentarios() {
 	const [comentarios, setComentarios] = useState<string[]>([]);
