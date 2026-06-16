@@ -1,7 +1,7 @@
-import Header from "../Header";
+import { useState } from "react";
 import CardPost from "../../components/CardPost";
 import FormPublicar from "../../components/FormPublicar";
-import { useState } from "react";
+import Header from "../Header";
 
 type Comentario = {
 	id: number;
