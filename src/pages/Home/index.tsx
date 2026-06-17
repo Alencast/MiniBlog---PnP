@@ -48,7 +48,9 @@ export default function Home() {
 				console.error(error);
 			}
 		}
-		buscarPosts();
+
+		const intervalo = setInterval(buscarPosts, 2000);
+		return () => clearInterval(intervalo);
 	}, []);
 	return (
 		<>
