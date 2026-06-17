@@ -14,6 +14,11 @@ class PublicarService {
 
 		return response;
 	}
+
+	async getAllPosts() {
+		const response = await axiosInstance.get("/publicacao/");
+		return response;
+	}
 }
 
 export default new PublicarService();

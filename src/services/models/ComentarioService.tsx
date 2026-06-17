@@ -8,4 +8,10 @@ class ComentarioService {
 		});
 		return response;
 	}
+
+	async getComentariosByPostId(postId: number) {
+		const response = await axiosInstance.get("/comentarios/", {
+			
+		});
+	}
 }
