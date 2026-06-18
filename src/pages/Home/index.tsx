@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardPost from "../../components/CardPost";
 import FormPublicar from "../../components/FormPublicar";
 import Header from "../Header";
+import PublicarService from "../../services/models/PublicarService";
 
 type Comentario = {
 	id: number;
@@ -36,6 +37,21 @@ export default function Home() {
 	function adicionarPost(novoPost: Post) {
 		setPosts((prev) => [novoPost, ...prev]);
 	}
+
+	useEffect(() => {
+		async function buscarPosts() {
+			try {
+				const posts = await PublicarService.getAllPosts();
+				console.log(posts.data);
+				setPosts(posts.data.results);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+
+		const intervalo = setInterval(buscarPosts, 2000);
+		return () => clearInterval(intervalo);
+	}, []);
 	return (
 		<>
 			<Header />

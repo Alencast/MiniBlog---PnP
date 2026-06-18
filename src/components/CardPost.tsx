@@ -102,7 +102,7 @@ export default function CardPost({ post }: CardPostProps) {
 				</div>
 				{showComentarios && (
 					<div className="absolute top-0 left-full ml-5 w-80">
-						<SideBarComentarios />
+						<SideBarComentarios postId={post.id} />
 					</div>
 				)}
 			</div>
