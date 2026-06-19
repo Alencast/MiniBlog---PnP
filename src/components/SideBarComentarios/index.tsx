@@ -2,12 +2,16 @@ import { BrButton, BrTextarea } from "@govbr-ds/react-components";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
-import CardComentario from "./CardComentario";
+import CardComentario from "../CardComentario";
 import { useEffect, useState } from "react";
-import ComentarioService from "../services/models/ComentarioService";
+import ComentarioService from "../../services/models/ComentarioService";
 
 type SideBarComentariosProps = {
 	postId: number;
+};
+
+type FormData = {
+	comentario: string;
 };
 type Comentario = {
 	id: number;
@@ -36,18 +40,15 @@ export default function SideBarComentarios({
 		handleSubmit,
 		reset,
 		formState: { errors },
-	} = useForm({
+	} = useForm<FormData>({
 		resolver: yupResolver(schema),
 	});
 
 	function adicionarComentario(novoComentario: Comentario) {
 		setComentarios([...comentarios, novoComentario]);
 	}
-	const usuario = localStorage.getItem("usuario");
 
-	const nomeUsuario = usuario ? JSON.parse(usuario).nome : "Usuário";
-
-	async function dataHandler(data: any) {
+	async function dataHandler(data: FormData) {
 		try {
 			const response = await ComentarioService.cadastrarComentario(
 				postId,
@@ -101,7 +102,9 @@ export default function SideBarComentarios({
 							className="w-full"
 							placeholder="Escreva seu comentário..."
 							value={field.value || ""}
-							onChange={(e) => field.onChange(e.target.value)}
+							onChange={(e: any) =>
+								field.onChange(e.target.value)
+							}
 							status={errors.comentario ? "danger" : undefined}
 							feedbackText={errors.comentario?.message}
 						/>

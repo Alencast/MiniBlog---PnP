@@ -2,12 +2,13 @@ import { Controller, useForm } from "react-hook-form";
 import { BrTextarea, BrButton, BrInput } from "@govbr-ds/react-components";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import PublicarService from "../services/models/PublicarService";
-import type { Post } from "../pages/Home/index";
+import PublicarService from "../../services/models/PublicarService";
+import type { Post } from "../../pages/Home/index";
 
 type FormPublicarProps = {
 	onPublicar: (post: Post) => void;
 };
+
 const schema = yup.object().shape({
 	titulo: yup.string().required("Título é obrigatório"),
 	descricao: yup.string().required("Descrição é obrigatória"),
@@ -57,7 +58,9 @@ export default function FormPublicar({ onPublicar }: FormPublicarProps) {
 								className="w-full"
 								placeholder="Título da publicação"
 								value={field.value || ""}
-								onChange={(e) => field.onChange(e.target.value)}
+								onChange={(e: any) =>
+									field.onChange(e.target.value)
+								}
 								status={errors.titulo ? "danger" : undefined}
 								feedbackText={errors.titulo?.message}
 							/>
@@ -72,9 +75,15 @@ export default function FormPublicar({ onPublicar }: FormPublicarProps) {
 								className="w-full"
 								placeholder="O que está acontecendo?"
 								value={field.value || ""}
-								onChange={(e) => field.onChange(e.target.value)}
+								onChange={(e: any) =>
+									field.onChange(e.target.value)
+								}
 								status={errors.descricao ? "danger" : undefined}
-								feedbackText={errors.descricao?.message}
+								feedbackText={
+									errors.descricao?.message as
+										| string
+										| undefined
+								}
 							/>
 						)}
 					/>
@@ -90,7 +99,7 @@ export default function FormPublicar({ onPublicar }: FormPublicarProps) {
 									type="file"
 									accept="image/*"
 									icon="fas fa-image"
-									onChange={(e) =>
+									onChange={(e: any) =>
 										field.onChange(e.target.files?.[0])
 									}
 								/>

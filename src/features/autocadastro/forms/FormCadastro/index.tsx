@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
-import CadastroService from "../../../services/models/CadastroService";
+import CadastroService from "../../../../services/models/CadastroService";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
@@ -120,7 +120,7 @@ export default function FormCadastro() {
 									placeholder="Digite seu usuário"
 									icon="fas fa-user-tie"
 									value={field.value || ""}
-									onChange={(e) =>
+									onChange={(e: any) =>
 										field.onChange(e.target.value)
 									}
 									onBlur={field.onBlur}
@@ -142,7 +142,7 @@ export default function FormCadastro() {
 									placeholder="Digite seu nome completo"
 									icon="fas fa-user"
 									value={field.value || ""}
-									onChange={(e) =>
+									onChange={(e: any) =>
 										field.onChange(e.target.value)
 									}
 									onBlur={field.onBlur}
@@ -163,7 +163,7 @@ export default function FormCadastro() {
 									icon="fas fa-lock"
 									type={showPassword ? "text" : "password"}
 									value={field.value || ""}
-									onChange={(e) =>
+									onChange={(e: any) =>
 										field.onChange(e.target.value)
 									}
 									onBlur={field.onBlur}
@@ -203,7 +203,7 @@ export default function FormCadastro() {
 									icon="fas fa-lock"
 									type={showPassword ? "text" : "password"}
 									value={field.value || ""}
-									onChange={(e) =>
+									onChange={(e: any) =>
 										field.onChange(e.target.value)
 									}
 									onBlur={field.onBlur}

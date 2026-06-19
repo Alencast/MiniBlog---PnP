@@ -3,9 +3,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BrInput, BrCard } from "@govbr-ds/react-components";
-import Ratinho from "../../../assets/Ratinho.jpg";
-import LoginService from "../../../services/models/LoginService";
-import { isAuthenticated } from "../../../routes/auth";
+import Ratinho from "../../../../assets/Ratinho.jpg";
+import LoginService from "../../../../services/models/LoginService";
+
 import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
@@ -28,12 +28,6 @@ export default function FormLogin() {
 		resolver: yupResolver(schema),
 	});
 
-	//functions
-	function testeAuth() {
-		if (isAuthenticated()) {
-			console.log("Usuário autenticado");
-		}
-	}
 	async function dataHandler(data: any) {
 		console.log(data);
 
