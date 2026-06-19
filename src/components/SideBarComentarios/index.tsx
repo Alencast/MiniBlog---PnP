@@ -5,24 +5,10 @@ import { Controller, useForm } from "react-hook-form";
 import CardComentario from "../CardComentario";
 import { useEffect, useState } from "react";
 import ComentarioService from "../../services/models/ComentarioService";
+import type { FormData, Comentario } from "../../interfaces/interface";
 
 type SideBarComentariosProps = {
 	postId: number;
-};
-
-type FormData = {
-	comentario: string;
-};
-type Comentario = {
-	id: number;
-	publicacao: number;
-	mensagem: string;
-	publicado_em: string;
-	autor: {
-		id: number;
-		username: string;
-		nome: string;
-	};
 };
 const schema = yup.object().shape({
 	comentario: yup

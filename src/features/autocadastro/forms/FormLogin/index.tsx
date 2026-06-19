@@ -5,7 +5,6 @@ import { useState } from "react";
 import { BrInput, BrCard } from "@govbr-ds/react-components";
 import Ratinho from "../../../../assets/Ratinho.jpg";
 import LoginService from "../../../../services/models/LoginService";
-
 import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
@@ -80,7 +79,7 @@ export default function FormLogin() {
 									placeholder="Digite seu usuário"
 									icon="fas fa-user-tie"
 									value={field.value || ""}
-									onChange={(e) =>
+									onChange={(e: any) =>
 										field.onChange(e.target.value)
 									}
 									onBlur={field.onBlur}
@@ -103,7 +102,7 @@ export default function FormLogin() {
 									icon="fas fa-lock"
 									type={showPassword ? "text" : "password"}
 									value={field.value || ""}
-									onChange={(e) =>
+									onChange={(e: any) =>
 										field.onChange(e.target.value)
 									}
 									onBlur={field.onBlur}
