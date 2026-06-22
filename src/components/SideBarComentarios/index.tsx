@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import CardComentario from "../CardComentario";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ComentarioService from "../../services/models/ComentarioService";
 import type { FormData, Comentario } from "../../interfaces/interface";
 
@@ -51,13 +51,14 @@ export default function SideBarComentarios({
 
 	async function buscarComentarios() {
 		const coments = await ComentarioService.getAllComentarios();
-		console.log(coments);
+		setComentarios(coments);
+	}
 
-		const comentariosDoPost = coments.filter(
+	const comentariosDoPost = useMemo(() => {
+		return comentarios.filter(
 			(coment: Comentario) => coment.publicacao === postId,
 		);
-		setComentarios(comentariosDoPost);
-	}
+	}, [comentarios, postId]);
 
 	useEffect(() => {
 		const intervalo = setInterval(buscarComentarios, 2000);
@@ -69,7 +70,7 @@ export default function SideBarComentarios({
 			<div className="font-bold mb-4">Comentários</div>
 
 			<div className="flex-1 overflow-y-auto">
-				{comentarios.map((comentario) => (
+				{comentariosDoPost.map((comentario) => (
 					<CardComentario
 						key={comentario.id}
 						mensagem={comentario.mensagem}
