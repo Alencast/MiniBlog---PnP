@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Post } from "../../pages/Home/index";
+import type { Post } from "../../components/interfaces";
 import SideBarComentarios from "../SideBarComentarios";
 
 type CardPostProps = {

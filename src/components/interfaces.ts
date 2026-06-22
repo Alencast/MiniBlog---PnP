@@ -12,7 +12,6 @@ export interface Post {
 	autor: Autor;
 	publicado_em: string;
 }
-
 export interface FormData {
 	comentario: string;
 }

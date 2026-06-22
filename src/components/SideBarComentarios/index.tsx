@@ -5,7 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 import CardComentario from "../CardComentario";
 import { useEffect, useMemo, useState } from "react";
 import ComentarioService from "../../services/models/ComentarioService";
-import type { FormData, Comentario } from "../../interfaces/interface";
+import type { FormData, Comentario } from "../../components/interfaces";
 
 type SideBarComentariosProps = {
 	postId: number;

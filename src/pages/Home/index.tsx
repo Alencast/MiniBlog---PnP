@@ -5,6 +5,7 @@ import Header from "../Header";
 import PublicarService from "../../services/models/PublicarService";
 import type { Post } from "../../interfaces/interface";
 
+
 export default function Home() {
 	const [posts, setPosts] = useState<Post[]>([]);
 

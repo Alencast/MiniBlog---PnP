@@ -3,7 +3,7 @@ import { BrTextarea, BrButton, BrInput } from "@govbr-ds/react-components";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PublicarService from "../../services/models/PublicarService";
-import type { Post } from "../../pages/Home/index";
+import type { Post } from "../../components/interfaces";
 
 type FormPublicarProps = {
 	onPublicar: (post: Post) => void;
