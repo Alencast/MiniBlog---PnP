@@ -12,17 +12,17 @@ export default function Home() {
 		setPosts((prev) => [novoPost, ...prev]);
 	}
 
-	useEffect(() => {
-		async function buscarPosts() {
-			try {
-				const posts = await PublicarService.getAllPosts();
-				console.log(posts.data);
-				setPosts(posts.data.results);
-			} catch (error) {
-				console.error(error);
-			}
+	async function buscarPosts() {
+		try {
+			const posts = await PublicarService.getAllPosts();
+			console.log(posts.data);
+			setPosts(posts.data.results);
+		} catch (error) {
+			console.error(error);
 		}
+	}
 
+	useEffect(() => {
 		const intervalo = setInterval(buscarPosts, 2000);
 		return () => clearInterval(intervalo);
 	}, []);

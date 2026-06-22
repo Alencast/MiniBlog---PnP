@@ -49,18 +49,17 @@ export default function SideBarComentarios({
 		}
 	}
 
+	async function buscarComentarios() {
+		const coments = await ComentarioService.getAllComentarios();
+		console.log(coments);
+
+		const comentariosDoPost = coments.filter(
+			(coment: Comentario) => coment.publicacao === postId,
+		);
+		setComentarios(comentariosDoPost);
+	}
+
 	useEffect(() => {
-		async function buscarComentarios() {
-			const coments = await ComentarioService.getAllComentarios();
-			console.log(coments);
-
-			const comentariosDoPost = coments.filter(
-				(coment: Comentario) => coment.publicacao === postId,
-			);
-			setComentarios(comentariosDoPost);
-		}
-		buscarComentarios();
-
 		const intervalo = setInterval(buscarComentarios, 2000);
 		return () => clearInterval(intervalo);
 	}, [postId]);
