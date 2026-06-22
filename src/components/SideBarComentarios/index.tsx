@@ -16,6 +16,25 @@ const schema = yup.object().shape({
 		.required("O comentário é obrigatório")
 		.max(200, "O comentário não pode ter mais de 200 caracteres"),
 });
+
+/**
+ * Componente responsável por exibir e gerenciar os comentários de um post.
+ *
+ * Realiza a busca periódica dos comentários, filtra apenas os relacionados
+ * ao post atual e permite a criação de novos comentários.
+ *
+ * @author roblvs
+ *
+ * @param {SideBarComentariosProps} props Propriedades do componente.
+ * @param {number} props.postId ID do post ao qual os comentários pertencem.
+ *
+ * @returns {JSX.Element} Sidebar com lista de comentários e formulário de envio.
+ *
+ * @example
+ * ```tsx
+ * <SideBarComentarios postId={1} />
+ * ```
+ */
 export default function SideBarComentarios({
 	postId,
 }: SideBarComentariosProps) {

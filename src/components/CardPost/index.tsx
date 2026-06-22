@@ -6,6 +6,23 @@ type CardPostProps = {
 	post: Post;
 };
 
+/**
+ * Componente responsável por exibir um post em formato de card,
+ * com opção de visualizar comentários em uma sidebar lateral.
+ *
+ * @author roblvs
+ *
+ *
+ * @param {CardPostProps} props Propriedades do componente.
+ * @param {Post} props.post Objeto do post contendo informações como título, descrição, autor e imagem.
+ *
+ * @returns {JSX.Element} Card visual do post com ações de curtir, comentar e compartilhar.
+ *
+ * @example
+ * ```tsx
+ * <CardPost post={post} />
+ * ```
+ */
 export default function CardPost({ post }: CardPostProps) {
 	const [showComentarios, setShowComentarios] = useState(false);
 

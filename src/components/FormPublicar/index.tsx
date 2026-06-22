@@ -15,6 +15,28 @@ const schema = yup.object().shape({
 	imagemURL: yup.mixed(),
 });
 
+/**
+ * Componente responsável por exibir um formulário de criação de publicações.
+ *
+ * Permite ao usuário criar um novo post com título, descrição e imagem opcional,
+ * enviando os dados para o serviço de publicação e retornando o post criado via callback.
+ *
+ * @author roblvs
+ *
+ *
+ * @param {FormPublicarProps} props Propriedades do componente.
+ * @param {(post: Post) => void} props.onPublicar Função chamada após a publicação ser criada com sucesso.
+ * Recebe o post retornado pela API.
+ *
+ * @returns {JSX.Element} Formulário de criação de publicação.
+ *
+ * @example
+ * ```tsx
+ * <FormPublicar
+ *   onPublicar={(post) => console.log("Novo post:", post)}
+ * />
+ * ```
+ */
 export default function FormPublicar({ onPublicar }: FormPublicarProps) {
 	const {
 		control,

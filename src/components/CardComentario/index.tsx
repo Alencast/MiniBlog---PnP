@@ -3,6 +3,23 @@ type CardComentarioProps = {
 	autor: string;
 };
 
+/**
+ * Componente responsável por exibir um comentário em formato de card.
+ *
+ * @author roblvs
+ *
+ * @param {CardComentarioProps} props Propriedades do componente.
+ * @param {string} props.mensagem Conteúdo do comentário.
+ * @param {string} props.autor Nome do autor do comentário.
+ *
+ * @example
+ * ```tsx
+ * <CardComentario
+ *   mensagem="Muito bom o post!"
+ *   autor="João Silva"
+ * />
+ * ```
+ */
 export default function CardComentario({
 	mensagem,
 	autor,
