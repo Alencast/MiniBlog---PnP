@@ -1,7 +1,15 @@
 import { BrHeader } from "@govbr-ds/react-components";
 import logo from "../../assets/logo.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+	const navigate = useNavigate();
+
+	function logout() {
+		localStorage.removeItem("access");
+		navigate("/login");
+	}
+
 	return (
 		<BrHeader
 			menuId="main-navigation"
@@ -24,6 +32,10 @@ export default function Header() {
 				{
 					label: "Contato",
 					onClick: () => {},
+				},
+				{
+					label: "Sair",
+					onClick: () => logout(),
 				},
 			]}
 			features={[
