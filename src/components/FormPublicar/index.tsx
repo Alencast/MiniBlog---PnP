@@ -2,8 +2,9 @@ import { Controller, useForm } from "react-hook-form";
 import { BrTextarea, BrButton, BrInput } from "@govbr-ds/react-components";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import PublicarService from "../../services/models/PublicarService";
+
 import type { Post } from "../../components/interfaces";
+import PublicarService from "../../services/models/PublicarService/PublicarService";
 
 type FormPublicarProps = {
 	onPublicar: (post: Post) => void;
@@ -20,7 +21,7 @@ const schema = yup.object().shape({
  *
  * Permite ao usuário criar um novo post com título, descrição e imagem opcional,
  * enviando os dados para o serviço de publicação e retornando o post criado via callback.
- *
+ * @date 22/06/2026
  * @author roblvs
  *
  *
@@ -38,6 +39,9 @@ const schema = yup.object().shape({
  * ```
  */
 export default function FormPublicar({ onPublicar }: FormPublicarProps) {
+	// -----------------------------
+	// Hooks do React e Form
+	// -----------------------------
 	const {
 		control,
 		handleSubmit,

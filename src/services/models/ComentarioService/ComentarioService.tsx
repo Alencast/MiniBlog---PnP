@@ -1,4 +1,4 @@
-import axiosInstance from "../commom/axiosInstance";
+import axiosInstance from "../../commom/axiosInstance";
 
 class ComentarioService {
 	async cadastrarComentario(publicacao: number, mensagem: string) {

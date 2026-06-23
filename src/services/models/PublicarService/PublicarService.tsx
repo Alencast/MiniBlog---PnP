@@ -1,4 +1,4 @@
-import axiosInstance from "../commom/axiosInstance";
+import axiosInstance from "../../commom/axiosInstance";
 
 class PublicarService {
 	async publicar(titulo: string, descricao: string, imagem: File | null) {

@@ -9,7 +9,7 @@ type CardPostProps = {
 /**
  * Componente responsável por exibir um post em formato de card,
  * com opção de visualizar comentários em uma sidebar lateral.
- *
+ * @date 22/06/2026
  * @author roblvs
  *
  *
@@ -24,6 +24,9 @@ type CardPostProps = {
  * ```
  */
 export default function CardPost({ post }: CardPostProps) {
+	// -----------------------------
+	// Estados Locais
+	// -----------------------------
 	const [showComentarios, setShowComentarios] = useState(false);
 
 	function toggleComentarios() {

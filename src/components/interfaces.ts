@@ -1,3 +1,7 @@
+// -----------------------------
+// Interfaces de Modelo
+// -----------------------------
+
 export interface Autor {
 	id: number;
 	username: string;

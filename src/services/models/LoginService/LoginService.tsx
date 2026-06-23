@@ -1,4 +1,4 @@
-import axiosInstance from "../commom/axiosInstance";
+import axiosInstance from "../../commom/axiosInstance";
 
 class LoginService {
 	async logarUsuario(username: string, password: string) {

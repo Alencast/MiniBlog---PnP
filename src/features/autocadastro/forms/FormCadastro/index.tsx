@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
-import CadastroService from "../../../../services/models/CadastroService";
+import CadastroService from "../../../../services/models/CadastroService/CadastroService";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
@@ -18,7 +18,32 @@ const schema = yup.object().shape({
 		.oneOf([yup.ref("senha")], "As senhas não coincidem"),
 });
 
+/**
+ * Componente responsável por exibir o formulário de cadastro de usuário.
+ *
+ * Permite a criação de uma nova conta com validação de nome, usuário,
+ * senha e confirmação de senha. Também exibe mensagens de sucesso ou erro
+ * após a tentativa de cadastro.
+ *
+ * @date 22/06/2026
+ *
+ * @author
+ *   @roblvs
+ *
+ * @date 23/06/2026
+ *
+ * @returns {JSX.Element} Formulário de cadastro com validação e feedback de status.
+ *
+ * @example
+ * ```tsx
+ * <FormCadastro />
+ * ```
+ */
+
 export default function FormCadastro() {
+	// -----------------------------
+	// Estados Locais
+	// -----------------------------
 	const [mostrarMensagem, setMostrarMensagem] = useState(false);
 	const [statusMensagem, setStatusMensagem] = useState<"success" | "danger">(
 		"success",
@@ -28,6 +53,9 @@ export default function FormCadastro() {
 
 	const [showPassword, setShowPassword] = useState(false);
 
+	// -----------------------------
+	// Hooks do React e Form
+	// -----------------------------
 	const {
 		control,
 		handleSubmit,

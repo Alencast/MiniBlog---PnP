@@ -2,11 +2,36 @@ import { useEffect, useState } from "react";
 import CardPost from "../../components/CardPost";
 import FormPublicar from "../../components/FormPublicar";
 import Header from "../Header";
-import PublicarService from "../../services/models/PublicarService";
-import type { Post } from "../../interfaces/interface";
+import PublicarService from "../../services/models/PublicarService/PublicarService";
+import type { Post } from "../../components/interfaces";
 
-
+/**
+ * Página principal do sistema (Home).
+ *
+ * Responsável por listar os posts do sistema, atualizar periodicamente
+ * os dados através de polling e permitir a criação de novas publicações.
+ *
+ * Integra os componentes:
+ * - Header
+ * - FormPublicar
+ * - CardPost
+ *
+ * @date 23/06/2026
+ *
+ * @author roblvs
+ *
+ *
+ * @returns {JSX.Element} Página inicial com feed de posts e formulário de publicação.
+ *
+ * @example
+ * ```tsx
+ * <Home />
+ * ```
+ */
 export default function Home() {
+	// -----------------------------
+	// Estados Locais
+	// -----------------------------
 	const [posts, setPosts] = useState<Post[]>([]);
 
 	function adicionarPost(novoPost: Post) {

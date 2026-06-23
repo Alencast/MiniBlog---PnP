@@ -4,8 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BrInput, BrCard } from "@govbr-ds/react-components";
 import Ratinho from "../../../../assets/Ratinho.jpg";
-import LoginService from "../../../../services/models/LoginService";
+
 import { useNavigate } from "react-router-dom";
+import LoginService from "../../../../services/models/LoginService/LoginService";
 
 const schema = yup.object().shape({
 	usuario: yup.string().required("O usuário é obrigatório"), //lembrar da verificação de usuario único
@@ -15,10 +16,36 @@ const schema = yup.object().shape({
 		.min(6, "A senha deve ter pelo menos 6 caracteres"),
 });
 
+/**
+ * Componente responsável por exibir o formulário de login do sistema.
+ *
+ * Permite autenticação de usuários através de usuário e senha,
+ * realizando validação com react-hook-form e yup. Após login bem-sucedido,
+ * redireciona o usuário para a página inicial do sistema.
+ *
+ * @author roblvs
+ *
+ *
+ * @date 23/06/2026
+ *
+ * @returns {JSX.Element} Formulário de login com autenticação e navegação.
+ *
+ * @example
+ * ```tsx
+ * <FormLogin />
+ * ```
+ */
+
 export default function FormLogin() {
+	// -----------------------------
+	// Estados Locais
+	// -----------------------------
 	const [showPassword, setShowPassword] = useState(false);
 	const navigate = useNavigate();
 
+	// -----------------------------
+	// Hooks do React e Form
+	// -----------------------------
 	const {
 		control,
 		handleSubmit,

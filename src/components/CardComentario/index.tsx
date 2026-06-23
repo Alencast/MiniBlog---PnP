@@ -5,7 +5,7 @@ type CardComentarioProps = {
 
 /**
  * Componente responsável por exibir um comentário em formato de card.
- *
+ * @date 22/06/2026
  * @author roblvs
  *
  * @param {CardComentarioProps} props Propriedades do componente.
