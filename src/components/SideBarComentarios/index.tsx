@@ -42,11 +42,13 @@ export default function SideBarComentarios({
 	// -----------------------------
 	// Estados Locais
 	// -----------------------------
+
 	const [comentarios, setComentarios] = useState<Comentario[]>([]);
 
 	// -----------------------------
 	// Hooks do React e Form
 	// ----------------------------
+
 	const {
 		control,
 		handleSubmit,
@@ -56,6 +58,9 @@ export default function SideBarComentarios({
 		resolver: yupResolver(schema),
 	});
 
+	// -----------------------------
+	// Funções Auxiliares
+	// -----------------------------
 	function adicionarComentario(novoComentario: Comentario) {
 		setComentarios([...comentarios, novoComentario]);
 	}

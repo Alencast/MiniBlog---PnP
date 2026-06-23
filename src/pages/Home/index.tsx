@@ -38,6 +38,9 @@ export default function Home() {
 		setPosts((prev) => [novoPost, ...prev]);
 	}
 
+	// -----------------------------
+	// Funções Auxiliares
+	// -----------------------------
 	async function buscarPosts() {
 		try {
 			const posts = await PublicarService.getAllPosts();

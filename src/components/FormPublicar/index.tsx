@@ -50,6 +50,9 @@ export default function FormPublicar({ onPublicar }: FormPublicarProps) {
 		resolver: yupResolver(schema),
 	});
 
+	// -----------------------------
+	// Funções Auxiliares
+	// -----------------------------
 	async function dataHandler(data: any) {
 		try {
 			const payload = {

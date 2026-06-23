@@ -54,6 +54,9 @@ export default function FormLogin() {
 		resolver: yupResolver(schema),
 	});
 
+	// -----------------------------
+	// Funções Auxiliares
+	// -----------------------------
 	async function dataHandler(data: any) {
 		console.log(data);
 

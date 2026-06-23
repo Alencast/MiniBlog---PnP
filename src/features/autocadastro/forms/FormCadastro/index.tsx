@@ -65,7 +65,9 @@ export default function FormCadastro() {
 		resolver: yupResolver(schema),
 	});
 
-	//functions
+	// -----------------------------
+	// Funções Auxiliares
+	// -----------------------------
 	async function dataHandler(data: any) {
 		try {
 			const payload = {
