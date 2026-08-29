@@ -43,9 +43,9 @@ export default function SideBarComentarios({
 	function adicionarComentario(novoComentario: Comentario) {
 		setComentarios([...comentarios, novoComentario]);
 	}
-	const usuario = localStorage.getItem("usuario");
+	// const usuario = localStorage.getItem("usuario");
 
-	const nomeUsuario = usuario ? JSON.parse(usuario).nome : "Usuário";
+	// const nomeUsuario = usuario ? JSON.parse(usuario).nome : "Usuário";
 
 	async function dataHandler(data: any) {
 		try {
