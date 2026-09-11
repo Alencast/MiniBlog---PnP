@@ -1,8 +1,8 @@
-import axiosInstance from "../commom/axiosInstance";
+import { axiosPublic } from "../commom/axiosInstance";
 
 class LoginService {
 	async logarUsuario(username: string, password: string) {
-		const response = await axiosInstance.post("/login/", {
+		const response = await axiosPublic.post("/login/", {
 			username,
 			password,
 		});
