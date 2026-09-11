@@ -4,11 +4,11 @@ import FormPublicar from "../../components/FormPublicar";
 import Header from "../Header";
 import PublicarService from "../../services/models/PublicarService";
 
-type Comentario = {
-	id: number;
-	texto: string;
-	autor: string;
-};
+// type Comentario = {
+// 	id: number;
+// 	texto: string;
+// 	autor: string;
+// };
 
 export type Autor = {
 	id: number;

@@ -5,7 +5,6 @@ import { useState } from "react";
 import { BrInput, BrCard } from "@govbr-ds/react-components";
 import Ratinho from "../../../assets/Ratinho.jpg";
 import LoginService from "../../../services/models/LoginService";
-import { isAuthenticated } from "../../../routes/auth";
 import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
@@ -29,11 +28,11 @@ export default function FormLogin() {
 	});
 
 	//functions
-	function testeAuth() {
-		if (isAuthenticated()) {
-			console.log("Usuário autenticado");
-		}
-	}
+	// function testeAuth() {
+	// 	if (isAuthenticated()) {
+	// 		console.log("Usuário autenticado");
+	// 	}
+	// }
 	async function dataHandler(data: any) {
 		console.log(data);
 
