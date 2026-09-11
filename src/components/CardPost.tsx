@@ -1,6 +1,9 @@
 import { useState } from "react";
+
 import type { Post } from "../pages/Home/index";
+
 import SideBarComentarios from "./SideBarComentarios";
+import PublicarService from "../services/models/PublicarService";
 
 type CardPostProps = {
 	post: Post;
@@ -12,6 +15,16 @@ export default function CardPost({ post }: CardPostProps) {
 	function toggleComentarios() {
 		setShowComentarios((prev) => !prev);
 	}
+
+	async function handleDelete() {
+		try {
+			await PublicarService.deletePost(post.id);
+			console.log("Publicação excluída");
+		} catch (error) {
+			console.error("Erro ao excluir publicação:", error);
+		}
+	}
+
 	return (
 		<>
 			<div className="relative">
@@ -24,7 +37,10 @@ export default function CardPost({ post }: CardPostProps) {
 									title={post.autor.nome}
 								>
 									<span className="content">
-										<img src="https://picsum.photos/id/823/400" />
+										<img
+											src="https://picsum.photos/id/823/400"
+											alt={post.autor.nome}
+										/>
 									</span>
 								</span>
 
@@ -32,6 +48,7 @@ export default function CardPost({ post }: CardPostProps) {
 									<div className="text-weight-semi-bold text-up-02">
 										{post.autor.nome}
 									</div>
+
 									<div>FrontEnd Developer</div>
 								</div>
 
@@ -39,10 +56,11 @@ export default function CardPost({ post }: CardPostProps) {
 									<button
 										className="br-button circle"
 										type="button"
-										aria-label="Menu"
+										aria-label="Excluir publicação"
+										onClick={handleDelete}
 									>
 										<i
-											className="fas fa-ellipsis-v"
+											className="fas fa-trash"
 											aria-hidden="true"
 										/>
 									</button>
@@ -65,41 +83,45 @@ export default function CardPost({ post }: CardPostProps) {
 								/>
 							)}
 						</div>
+
 						<div className="ml-auto">
 							<button
 								className="br-button circle"
 								type="button"
-								aria-label="Ícone ilustrativo"
+								aria-label="Curtir publicação"
 							>
 								<i
 									className="fas fa-heart"
 									aria-hidden="true"
-								></i>
+								/>
 							</button>
+
 							<button
 								className="br-button circle"
 								type="button"
-								aria-label="Ícone ilustrativo"
+								aria-label="Comentários"
 								onClick={toggleComentarios}
 							>
 								<i
 									className="fas fa-comment"
 									aria-hidden="true"
-								></i>
+								/>
 							</button>
+
 							<button
 								className="br-button circle"
 								type="button"
-								aria-label="Ícone ilustrativo 3"
+								aria-label="Compartilhar publicação"
 							>
 								<i
 									className="fas fa-share-alt"
 									aria-hidden="true"
-								></i>
+								/>
 							</button>
 						</div>
 					</div>
 				</div>
+
 				{showComentarios && (
 					<div className="absolute top-0 left-full ml-5 w-80">
 						<SideBarComentarios postId={post.id} />
