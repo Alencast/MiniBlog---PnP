@@ -68,6 +68,21 @@ Sistema
 
 ```
 
+## 2.4 Características do Usuário
+
+O sistema possui como principal perfil de usuário o usuário comum, que pode utilizar a plataforma para visualizar conteúdos publicados, criar posts, compartilhar imagens e interagir por meio de comentários.
+
+### Usuário Comum
+
+O usuário comum deve possuirr conhecimentos básicos de utilização de aplicações web e pode realizar as seguintes ações no sistema:
+
+- Realizar cadastro e autenticação;
+- Visualizar posts publicados;
+- Criar, editar e excluir seus próprios posts;
+- Publicar imagens associadas aos posts;
+- Adicionar comentários as publicações;
+- Visualizar comentários publicados.
+
 # Parte III: Requisitos do Sistema
 
 ## 3.1 Requisitos por Subsistema/Componente
