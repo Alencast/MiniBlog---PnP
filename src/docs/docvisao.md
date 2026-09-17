@@ -82,8 +82,8 @@ O sistema é dividido nos seguintes subsistemas e componentes principais:
 | **Posts**                    | Permitir a criação, edição, exclusão e visualização de publicações.                                      |
 | **Comentários**              | Permitir a inserção, visualização e gerenciamento de comentários nas publicações.                        |
 | **Imagens**                  | Permitir o envio e a associação de imagens às publicações.                                               |
-| **Backend / API**            | Processar as requisições, aplicar as regras de negócio e realizar a comunicação com o banco de dados.    |
-| **Banco de Dados**           | Armazenar os dados dos usuários, publicações e comentários.                                              |
+| **Backend / API**            | Processar as requisições do front, aplicar as regras de negócio e realizar a comunicação com o banco de dados.    |
+| **Banco de Dados**           | Bando de dados local do Django para armazenar os dados dos usuários, publicações e comentários.                                              |
 | **Armazenamento de Imagens** | Armazenar os arquivos de imagens enviados pelos usuários.                                                |
 
 ## 3.2 Requisitos Funcionais, Requisitos de Qualidade e Restrições
@@ -95,26 +95,24 @@ O sistema é dividido nos seguintes subsistemas e componentes principais:
 | **RF001** | O sistema deve permitir o cadastro de novos usuários.                                                       |
 | **RF002** | O sistema deve permitir que usuários cadastrados realizem login.                                            |
 | **RF003** | O sistema deve permitir que usuários autenticados criem posts.                                              |
-| **RF004** | O sistema deve permitir que usuários autenticados editem seus posts.                                        |
+| **RF004** |                                      |
 | **RF005** | O sistema deve permitir que usuários autenticados excluam seus posts.                                       |
 | **RF006** | O sistema deve permitir a visualização dos posts publicados.                                                |
 | **RF007** | O sistema deve permitir o envio de imagens associadas aos posts.                                            |
 | **RF008** | O sistema deve permitir que usuários adicionem comentários aos posts.                                       |
 | **RF009** | O sistema deve permitir a visualização dos comentários associados aos posts.                                |
 | **RF010** | O sistema deve permitir o gerenciamento dos comentários conforme as permissões do usuário.                  |
-| **RF011** | O sistema deve autenticar os usuários antes de permitir o acesso às funcionalidades restritas.              |
-| **RF012** | O sistema deve disponibilizar uma interface para interação dos usuários com as funcionalidades do miniblog. |
+| **RF011** | O sistema deve autenticar os usuários antes de permitir o acesso as funcionalidades restritas.              |
 
 ### 3.2.2 Requisitos de Qualidade
 
 | ID        | Requisito                                                                                                                  |
 | --------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **RQ001** | A interface deve ser simples e permitir que o usuário identifique as principais funcionalidades do sistema.                |
-| **RQ002** | O sistema deve validar os dados fornecidos pelo usuário antes de realizar operações de cadastro, publicação e comentários. |
-| **RQ003** | O sistema deve restringir funcionalidades que necessitam de autenticação a usuários autenticados.                          |
-| **RQ004** | A comunicação entre o frontend e o backend deve ser realizada por meio de uma API REST.                                    |
-| **RQ005** | O sistema deve apresentar mensagens de erro quando uma operação não puder ser realizada.                                   |
-| **RQ006** | O sistema deve manter os dados armazenados de forma consistente durante as operações realizadas pelos usuários.            |
+| **RQ001** | A interface deve permitir que o usuário identifique as principais funcionalidades do sistema.                |
+| **RQ002** | O sistema deve restringir funcionalidades que necessitam de autenticação a usuários autenticados.  |
+| **RQ003** | A comunicação entre o frontend e o backend deve ser realizada por meio de uma API REST.                         |
+| **RQ004** | O sistema deve apresentar mensagens de erro quando uma operação não puder ser realizada.                                  |
+| **RQ005** | O sistema deve manter os dados armazenados no banco de forma consistente durante as operações realizadas pelos usuários.                                   |
 
 ### 3.2.3 Restrições
 
@@ -123,9 +121,8 @@ O sistema é dividido nos seguintes subsistemas e componentes principais:
 | **RE001** | O frontend do sistema deve ser desenvolvido utilizando React.                                                          |
 | **RE002** | O backend deve ser desenvolvido utilizando Django REST Framework.                                                      |
 | **RE003** | A comunicação entre frontend e backend deve utilizar uma API REST.                                                     |
-| **RE004** | O acesso às funcionalidades que exigem autenticação deve utilizar o mecanismo de autenticação definido pela aplicação. |
-| **RE005** | O sistema depende de um banco de dados para persistência das informações.                                              |
-| **RE006** | O armazenamento das imagens deve ser realizado separadamente dos demais dados textuais da aplicação.                   |
+| **RE004** | O acesso as funcionalidades que precisam de autenticação deve utilizar o mecanismo de autenticação definido pela aplicação. (no caso, o jwt) |
+| **RE005** | O armazenamento das imagens deve ser realizado separadamente dos demais dados textuais da aplicação.                                              |
 
 ## 3.3 Interfaces
 
@@ -137,20 +134,20 @@ A interface do usuário será disponibilizada por meio de uma aplicação web de
 
 * Realizar cadastro e login;
 * Visualizar posts;
-* Criar, editar e excluir posts;
+* Criar e excluir posts;
 * Enviar imagens;
-* Visualizar comentários;
-* Adicionar comentários às publicações.
+* Visualizar os comentários;
+* Adicionar comentários nas publicações.
 
 ### 3.3.2 Interface entre Frontend e Backend
 
-O frontend realiza a comunicação com o backend por meio de uma **API REST desenvolvida com Django REST Framework**.
+O frontend realiza a comunicação com o backend por meio de uma API REST desenvolvida com Django REST.
 
 As requisições são utilizadas para realizar operações relacionadas aos usuários, posts, comentários e imagens. As respostas da API são utilizadas pelo frontend para apresentar os dados e os resultados das operações realizadas.
 
 ### 3.3.3 Interface com o Banco de Dados
 
-O backend é responsável pela comunicação com o banco de dados. As informações relacionadas aos usuários, posts e comentários são persistidas por meio do backend, evitando que o frontend acesse diretamente o banco de dados.
+O banco de dados utilizado na aplicação é local. As informações relacionadas aos usuários, posts e comentários são persistidas por meio do backend, evitando que o frontend acesse diretamente o banco de dados.
 
 ### 3.3.4 Interface de Armazenamento de Imagens
 
