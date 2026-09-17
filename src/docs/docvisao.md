@@ -67,7 +67,6 @@ Sistema
 
 
 ```
-Claro. Aqui está a **Parte III inteira em Markdown**, pronta para copiar e colar no arquivo `.md`:
 
 # Parte III: Requisitos do Sistema
 
