@@ -19,6 +19,11 @@ class PublicarService {
 		const response = await axiosInstance.get("/publicacao/");
 		return response;
 	}
+
+	async deletePost(id: number) {
+		const response = await axiosInstance.delete(`/publicacao/${id}/`);
+		return response;
+	}
 }
 
 export default new PublicarService();
