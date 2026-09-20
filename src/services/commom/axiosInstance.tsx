@@ -1,10 +1,14 @@
 import axios from "axios";
 
+const configuredApiUrl =
+	import.meta.env.VITE_API_URL ?? "/api/";
+const apiBaseUrl = configuredApiUrl.replace(/^http:\/\//, "https://");
+
 export const axiosPublic = axios.create({
-	baseURL: "https://127.0.0.1:8000/",
+	baseURL: apiBaseUrl,
 });
 const axiosInstance = axios.create({
-	baseURL: "https://127.0.0.1:8000/",
+	baseURL: apiBaseUrl,
 	// headers: {
 	// 	"Content-Type": "application/json",
 	// },

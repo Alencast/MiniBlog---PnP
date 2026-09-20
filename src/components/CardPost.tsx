@@ -11,6 +11,10 @@ type CardPostProps = {
 
 export default function CardPost({ post }: CardPostProps) {
 	const [showComentarios, setShowComentarios] = useState(false);
+	const imageUrl = post.imagem?.replace(
+		/^https?:\/\/127\.0\.0\.1:8000/,
+		"",
+	);
 
 	function toggleComentarios() {
 		setShowComentarios((prev) => !prev);
@@ -75,9 +79,9 @@ export default function CardPost({ post }: CardPostProps) {
 
 							<p>{post.descricao}</p>
 
-							{post.imagem && (
+							{imageUrl && (
 								<img
-									src={post.imagem}
+									src={imageUrl}
 									alt={post.titulo}
 									className="w-full rounded-lg mt-3"
 								/>
