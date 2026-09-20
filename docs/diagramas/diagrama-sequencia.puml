@@ -1,0 +1,16 @@
+@startuml
+title Diagrama de Sequência do Sistema - Criar publicação
+
+actor "Usuário autenticado" as Usuario
+participant "MiniBlog" as Sistema
+hide footbox
+
+Usuario -> Sistema: Preenche título, descrição e imagem
+Usuario -> Sistema: Solicita publicação
+
+alt Dados válidos e operação autorizada
+    Sistema --> Usuario: Publicação criada e exibida
+else Dados inválidos ou operação não autorizada
+    Sistema --> Usuario: Informa que a publicação não foi criada
+end
+@enduml
