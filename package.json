@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "lint": "eslint .",
+  "lint:deprecated": "eslint src --config eslint.deprecated.config.mjs",
+  "preview": "vite preview"
+},
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@govbr-ds/core": "^3.7.0",
