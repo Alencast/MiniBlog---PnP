@@ -1,0 +1,28 @@
+name: OWASP Dependency-Check
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [main]
+
+jobs:
+    dependency-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Baixar o código
+              uses: actions/checkout@v4
+
+            - name: Executar análise de vulnerabilidades
+              uses: dependency-check/Dependency-Check_Action@main
+              with:
+                  project: "Meu Projeto"
+                  path: "."
+                  format: "HTML"
+                  out: "reports"
+
+            - name: Salvar relatório
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: dependency-check-report
+                  path: reports

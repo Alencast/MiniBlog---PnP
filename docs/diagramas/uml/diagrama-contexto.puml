@@ -1,0 +1,16 @@
+@startuml
+title Diagrama de Contexto C4 - MiniBlog
+
+!include <C4/C4_Context>
+
+LAYOUT_WITH_LEGEND()
+
+Person(visitante, "Visitante", "Pessoa que acessa o MiniBlog sem autenticação.")
+Person(usuario, "Usuário autenticado", "Pessoa cadastrada que publica e interage com o conteúdo.")
+System(miniblog, "MiniBlog", "Sistema para cadastro, autenticação, publicações e comentários.")
+
+Rel(visitante, miniblog, "Acessa cadastro e login")
+Rel(usuario, miniblog, "Consulta e gerencia publicações e comentários")
+
+SHOW_LEGEND()
+@enduml

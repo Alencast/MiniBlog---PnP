@@ -1,0 +1,29 @@
+@startuml
+title Diagrama de Casos de Uso - MiniBlog
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor Visitante
+actor "Usuário autenticado" as Usuario
+
+rectangle "MiniBlog" {
+  usecase "Cadastrar-se" as UC_Cadastro
+  usecase "Autenticar-se" as UC_Login
+  usecase "Consultar publicações" as UC_ConsultarPosts
+  usecase "Criar publicação" as UC_CriarPost
+  usecase "Excluir publicação" as UC_ExcluirPost
+  usecase "Consultar comentários" as UC_ConsultarComentarios
+  usecase "Adicionar comentário" as UC_AdicionarComentario
+}
+
+Visitante --> UC_Cadastro
+Visitante --> UC_Login
+
+Usuario --> UC_ConsultarPosts
+Usuario --> UC_CriarPost
+Usuario --> UC_ExcluirPost
+Usuario --> UC_ConsultarComentarios
+Usuario --> UC_AdicionarComentario
+@enduml
