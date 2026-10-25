@@ -1,0 +1,29 @@
+name: Detectar código depreciado
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    deprecated:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v7
+
+            - name: Configurar Node.js
+              uses: actions/setup-node@v7
+              with:
+                  node-version: "24"
+
+            - name: Configurar pnpm
+              uses: pnpm/action-setup@v6
+              with:
+                  version: "11.5.2"
+
+            - name: Instalar dependências
+              run: pnpm install --frozen-lockfile
+
+            - name: Detectar código depreciado
+              run: pnpm lint:deprecated
