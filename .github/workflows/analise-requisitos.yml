@@ -13,7 +13,7 @@ jobs:
               uses: gabysmm/automatizacao-de-analise-de-requisitos-action@v2.1.0
               with:
                   api-key: ${{ secrets.LLM_API_KEY }}
-                  pasta-hus: docs/requisitos
+                  pasta-hus: src/docs/requisitos
             - if: always()
               uses: actions/upload-artifact@v4
               with:
