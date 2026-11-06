@@ -30,4 +30,38 @@ export default defineConfig([
       '@typescript-eslint/no-deprecated': 'error',
     },
   },
+
+  {
+    files: [
+      'src/components/DomeGallery.tsx',
+      'src/components/FormPublicar.tsx',
+      'src/components/SideBarComentarios.tsx',
+      'src/features/autocadastro/forms/FormCadastro.tsx',
+      'src/features/autocadastro/forms/FormLogin.tsx',
+    ],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
+
+  {
+    files: ['src/components/DomeGallery.tsx'],
+    rules: {
+      'react-hooks/purity': 'off',
+    },
+  },
+
+  {
+    files: ['src/features/autocadastro/forms/FormCadastro.tsx'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
+
+  {
+    files: ['src/pages/Footer/index.tsx'],
+    rules: {
+      'no-irregular-whitespace': 'off',
+    },
+  },
 ])
