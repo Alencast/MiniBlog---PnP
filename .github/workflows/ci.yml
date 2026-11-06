@@ -29,5 +29,8 @@ jobs:
             - name: Lint
               run: pnpm lint
 
+            - name: Detect code duplication
+              run: pnpm exec jscpd src --threshold 0
+
             - name: Build
               run: pnpm build
