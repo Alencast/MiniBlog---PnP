@@ -779,6 +779,14 @@ export default function DomeGallery({
 		}
 	};
 
+	const tryOpenItem = (element: HTMLElement) => {
+		if (draggingRef.current) return;
+		if (movedRef.current) return;
+		if (performance.now() - lastDragEndAt.current < 80) return;
+		if (openingRef.current) return;
+		openItemFromElement(element);
+	};
+
 	useEffect(() => {
 		return () => {
 			document.body.classList.remove("dg-scroll-lock");
@@ -937,16 +945,7 @@ export default function DomeGallery({
 										tabIndex={0}
 										aria-label={it.alt || "Open image"}
 										onClick={(e) => {
-											if (draggingRef.current) return;
-											if (movedRef.current) return;
-											if (
-												performance.now() -
-													lastDragEndAt.current <
-												80
-											)
-												return;
-											if (openingRef.current) return;
-											openItemFromElement(
+											tryOpenItem(
 												e.currentTarget as HTMLElement,
 											);
 										}}
@@ -956,16 +955,7 @@ export default function DomeGallery({
 													.pointerType !== "touch"
 											)
 												return;
-											if (draggingRef.current) return;
-											if (movedRef.current) return;
-											if (
-												performance.now() -
-													lastDragEndAt.current <
-												80
-											)
-												return;
-											if (openingRef.current) return;
-											openItemFromElement(
+											tryOpenItem(
 												e.currentTarget as HTMLElement,
 											);
 										}}

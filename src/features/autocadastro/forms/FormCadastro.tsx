@@ -1,9 +1,13 @@
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { BrInput, BrMessage, BrCard } from "@govbr-ds/react-components";
+import { BrMessage, BrCard } from "@govbr-ds/react-components";
 import CadastroService from "../../../services/models/CadastroService";
+import FormField from "./FormField";
+import CredentialsFields from "./CredentialsFields";
+import PasswordToggle from "./PasswordToggle";
+import FormHeader from "./FormHeader";
 
 const schema = yup.object().shape({
 	nome: yup.string().required("O nome é obrigatório"),
@@ -76,7 +80,7 @@ export default function FormCadastro() {
 		}
 	}
 
-	function ShowPassword() {
+	function togglePassword() {
 		setShowPassword((prev) => !prev);
 	}
 
@@ -98,144 +102,53 @@ export default function FormCadastro() {
 							></BrMessage>
 						)}
 
-						<h1
-							className="text-center font-bold text-white leading-none"
-							style={{
-								fontFamily: "'Caveat', cursive",
-								fontSize: "80px",
-							}}
-						>
-							MiniBlog
-						</h1>
-
-						{/*Novos inputs */}
-
-						<Controller
-							name="usuario"
+						<FormHeader />
+						<CredentialsFields
 							control={control}
-							render={({ field }) => (
-								<BrInput
-									className="w-full"
-									label="Usuário"
-									placeholder="Digite seu usuário"
-									icon="fas fa-user-tie"
-									value={field.value || ""}
-									onChange={(e) =>
-										field.onChange(e.target.value)
-									}
-									onBlur={field.onBlur}
-									status={
-										errors.usuario ? "danger" : undefined
-									}
-									feedbackText={errors.usuario?.message}
-								/>
-							)}
+							errors={errors}
+							showPassword={showPassword}
+							onTogglePassword={togglePassword}
+							includePassword={false}
 						/>
-
-						<Controller
+						<FormField
 							name="nome"
 							control={control}
-							render={({ field }) => (
-								<BrInput
-									className="w-full"
-									label="Nome"
-									placeholder="Digite seu nome completo"
-									icon="fas fa-user"
-									value={field.value || ""}
-									onChange={(e) =>
-										field.onChange(e.target.value)
-									}
-									onBlur={field.onBlur}
-									status={errors.nome ? "danger" : undefined}
-									feedbackText={errors.nome?.message}
-								/>
-							)}
+							errors={errors}
+							label="Nome"
+							placeholder="Digite seu nome completo"
+							icon="fas fa-user"
 						/>
 
-						<Controller
+						<FormField
 							name="senha"
 							control={control}
-							render={({ field }) => (
-								<BrInput
-									className="w-full"
-									label="Senha"
-									placeholder="Digite sua senha"
-									icon="fas fa-lock"
-									type={showPassword ? "text" : "password"}
-									value={field.value || ""}
-									onChange={(e) =>
-										field.onChange(e.target.value)
-									}
-									onBlur={field.onBlur}
-									status={errors.senha ? "danger" : undefined}
-									feedbackText={errors.senha?.message}
-									button={
-										<button
-											className="br-button"
-											type="button"
-											aria-label="Exibir senha"
-											role="switch"
-											aria-checked="false"
-											onClick={ShowPassword}
-										>
-											<i
-												className={
-													showPassword
-														? "fas fa-eye"
-														: "fas fa-eye-slash"
-												}
-												aria-hidden="true"
-											></i>
-										</button>
-									}
+							errors={errors}
+							label="Senha"
+							placeholder="Digite sua senha"
+							icon="fas fa-lock"
+							type={showPassword ? "text" : "password"}
+							button={
+								<PasswordToggle
+									showPassword={showPassword}
+									onClick={togglePassword}
 								/>
-							)}
+							}
 						/>
 
-						<Controller
+						<FormField
 							name="confirmacao_senha"
 							control={control}
-							render={({ field }) => (
-								<BrInput
-									className="w-full"
-									label="Confirmação de Senha"
-									placeholder="Digite sua senha novamente"
-									icon="fas fa-lock"
-									type={showPassword ? "text" : "password"}
-									value={field.value || ""}
-									onChange={(e) =>
-										field.onChange(e.target.value)
-									}
-									onBlur={field.onBlur}
-									status={
-										errors.confirmacao_senha
-											? "danger"
-											: undefined
-									}
-									feedbackText={
-										errors.confirmacao_senha?.message
-									}
-									button={
-										<button
-											className="br-button"
-											type="button"
-											aria-label="Exibir senha"
-											role="switch"
-											aria-checked="false"
-											onClick={ShowPassword}
-										>
-											<i
-												className={
-													showPassword
-														? "fas fa-eye"
-														: "fas fa-eye-slash"
-												}
-												aria-hidden="true"
-											></i>
-										</button>
-									}
+							errors={errors}
+							label="Confirmação de Senha"
+							placeholder="Digite sua senha novamente"
+							icon="fas fa-lock"
+							type={showPassword ? "text" : "password"}
+							button={
+								<PasswordToggle
+									showPassword={showPassword}
+									onClick={togglePassword}
 								/>
-							)}
+							}
 						/>
 
 						<div className="p-3 w-full">

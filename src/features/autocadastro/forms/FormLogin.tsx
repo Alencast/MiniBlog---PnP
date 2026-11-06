@@ -1,11 +1,13 @@
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { BrInput, BrCard } from "@govbr-ds/react-components";
+import { BrCard } from "@govbr-ds/react-components";
 import Ratinho from "../../../assets/Ratinho.jpg";
 import LoginService from "../../../services/models/LoginService";
 import { useNavigate } from "react-router-dom";
+import CredentialsFields from "./CredentialsFields";
+import FormHeader from "./FormHeader";
 
 const schema = yup.object().shape({
 	usuario: yup.string().required("O usuário é obrigatório"), //lembrar da verificação de usuario único
@@ -50,7 +52,7 @@ export default function FormLogin() {
 		}
 	}
 
-	function ShowPassword() {
+	function togglePassword() {
 		setShowPassword((prev) => !prev);
 	}
 
@@ -63,78 +65,12 @@ export default function FormLogin() {
 						className="flex flex-col items-center gap-4 w-full p-6"
 						onSubmit={handleSubmit(dataHandler)}
 					>
-						<h1
-							className="text-center font-bold text-white leading-none"
-							style={{
-								fontFamily: "'Caveat', cursive",
-								fontSize: "80px",
-							}}
-						>
-							MiniBlog
-						</h1>
-
-						{/*Novos inputs */}
-
-						<Controller
-							name="usuario"
+						<FormHeader />
+						<CredentialsFields
 							control={control}
-							render={({ field }) => (
-								<BrInput
-									className="w-full"
-									label="Usuário"
-									placeholder="Digite seu usuário"
-									icon="fas fa-user-tie"
-									value={field.value || ""}
-									onChange={(e) =>
-										field.onChange(e.target.value)
-									}
-									onBlur={field.onBlur}
-									status={
-										errors.usuario ? "danger" : undefined
-									}
-									feedbackText={errors.usuario?.message}
-								/>
-							)}
-						/>
-
-						<Controller
-							name="senha"
-							control={control}
-							render={({ field }) => (
-								<BrInput
-									className="w-full"
-									label="Senha"
-									placeholder="Digite sua senha"
-									icon="fas fa-lock"
-									type={showPassword ? "text" : "password"}
-									value={field.value || ""}
-									onChange={(e) =>
-										field.onChange(e.target.value)
-									}
-									onBlur={field.onBlur}
-									status={errors.senha ? "danger" : undefined}
-									feedbackText={errors.senha?.message}
-									button={
-										<button
-											className="br-button"
-											type="button"
-											aria-label="Exibir senha"
-											role="switch"
-											aria-checked="false"
-											onClick={ShowPassword}
-										>
-											<i
-												className={
-													showPassword
-														? "fas fa-eye"
-														: "fas fa-eye-slash"
-												}
-												aria-hidden="true"
-											></i>
-										</button>
-									}
-								/>
-							)}
+							errors={errors}
+							showPassword={showPassword}
+							onTogglePassword={togglePassword}
 						/>
 
 						<div className="p-3 w-full">
