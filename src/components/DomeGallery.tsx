@@ -91,7 +91,7 @@ const wrapAngleSigned = (deg: number) => {
 };
 const getDataNumber = (el: HTMLElement, name: string, fallback: number) => {
 	const attr = el.dataset[name] ?? el.getAttribute(`data-${name}`);
-	const n = attr == null ? NaN : parseFloat(attr);
+	const n = attr == null ? Number.NaN : Number.parseFloat(attr);
 	return Number.isFinite(n) ? n : fallback;
 };
 
@@ -727,8 +727,8 @@ export default function DomeGallery({
 		const sx0 = tileR.width / frameR.width;
 		const sy0 = tileR.height / frameR.height;
 
-		const validSx0 = isFinite(sx0) && sx0 > 0 ? sx0 : 1;
-		const validSy0 = isFinite(sy0) && sy0 > 0 ? sy0 : 1;
+		const validSx0 = Number.isFinite(sx0) && sx0 > 0 ? sx0 : 1;
+		const validSy0 = Number.isFinite(sy0) && sy0 > 0 ? sy0 : 1;
 
 		overlay.style.transform = `translate(${tx0}px, ${ty0}px) scale(${validSx0}, ${validSy0})`;
 		setTimeout(() => {
