@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
+import sonarjs from 'eslint-plugin-sonarjs'
 
 export default defineConfig([
   globalIgnores([
@@ -64,4 +65,26 @@ export default defineConfig([
       'no-irregular-whitespace': 'off',
     },
   },
+
+  {
+  files: ['**/*.{ts,tsx}'],
+  plugins: {
+    sonarjs,
+  },
+  rules: {
+    'sonarjs/cognitive-complexity': ['error', 15],
+    'sonarjs/no-duplicate-string': 'error',
+    'sonarjs/no-duplicated-branches': 'error',
+  },
+  
+},
+
+{
+  files: ['src/components/DomeGallery.tsx'],
+  rules: {
+    'sonarjs/cognitive-complexity': 'off',
+    'sonarjs/no-duplicate-string': 'off',
+    'sonarjs/no-duplicated-branches': 'off',
+  },
+},
 ])
