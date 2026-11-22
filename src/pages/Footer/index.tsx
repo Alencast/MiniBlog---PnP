@@ -2,7 +2,7 @@ import { BrFooter } from "@govbr-ds/react-components";
 
 const AD_LABEL = "Ad deserunt nostrud";
 const NULLA_LABEL = "Nulla occaecat eiusmod";
-const EX_LABEL = "Ex qui laborum consectetur aute commodo";
+const EX_LABEL = " Ex qui laborum consectetur aute commodo";
 
 export default function Footer() {
 	return (
