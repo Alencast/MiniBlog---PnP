@@ -64,17 +64,25 @@ export default function SideBarComentarios({
 
 	useEffect(() => {
 		async function buscarComentarios() {
-			const coments = await ComentarioService.getAllComentarios();
-			console.log(coments);
+			try {
+				const coments = await ComentarioService.getAllComentarios();
 
-			const comentariosDoPost = coments.filter(
-				(coment: Comentario) => coment.publicacao === postId,
-			);
-			setComentarios(comentariosDoPost);
+				const comentariosDoPost = coments.filter(
+					(coment: Comentario) => coment.publicacao === postId,
+				);
+
+				setComentarios(comentariosDoPost);
+			} catch (error) {
+				console.error("Erro ao buscar comentários:", error);
+			}
 		}
-		buscarComentarios();
 
-		const intervalo = setInterval(buscarComentarios, 2000);
+		void buscarComentarios();
+
+		const intervalo = setInterval(() => {
+			void buscarComentarios();
+		}, 2000);
+
 		return () => clearInterval(intervalo);
 	}, [postId]);
 
