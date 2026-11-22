@@ -10,7 +10,7 @@ jobs:
             - uses: actions/checkout@v4
             - name: Analisar requisitos
               id: analise
-              uses: gabysmm/automatizacao-de-analise-de-requisitos-action@v2.1.0
+              uses: gabysmm/automatizacao-de-analise-de-requisitos-action@48418c66487a848bd9dfd5fca6e34e66d2702f3b # v2.1.0
               with:
                   api-key: ${{ secrets.LLM_API_KEY }}
                   pasta-hus: src/docs/requisitos
