@@ -1,18 +1,11 @@
 export function repetirLiteral(): string[] {
-  return ["texto repetido", "texto repetido", "texto repetido"];
+  const texto = "texto repetido";
+  return [texto, texto, texto];
 }
 
 export function duplicarDecisoes(valor: number): string {
-  if (valor > 10) {
-    const resultado = "processado";
-    return resultado;
-  } else if (valor > 5) {
-    const resultado = "processado";
-    return resultado;
-  } else {
-    const resultado = "processado";
-    return resultado;
-  }
+  void valor;
+  return "processado";
 }
 
 export function complexidadeCognitiva(
@@ -21,33 +14,34 @@ export function complexidadeCognitiva(
   administrador: boolean,
   bloqueado: boolean,
 ): string {
-  if (idade >= 18) {
-    if (ativo) {
-      if (administrador) {
-        if (bloqueado) {
-          return "bloqueado";
-        } else {
-          if (idade >= 21) {
-            if (idade >= 30) {
-              if (idade >= 40) {
-                if (idade >= 50) {
-                  return "administrador senior";
-                }
-                return "administrador experiente";
-              }
-              return "administrador adulto";
-            }
-            return "administrador jovem";
-          }
-          return "administrador";
-        }
-      } else {
-        return "usuario ativo";
-      }
-    } else {
-      return "usuario inativo";
-    }
-  } else {
+  if (idade < 18) {
     return "menor";
   }
+
+  if (!ativo) {
+    return "usuario inativo";
+  }
+
+  if (!administrador) {
+    return "usuario ativo";
+  }
+
+  if (bloqueado) {
+    return "bloqueado";
+  }
+
+  if (idade >= 50) {
+    return "administrador senior";
+  }
+  if (idade >= 40) {
+    return "administrador experiente";
+  }
+  if (idade >= 30) {
+    return "administrador adulto";
+  }
+  if (idade >= 21) {
+    return "administrador jovem";
+  }
+
+  return "administrador";
 }
