@@ -1,0 +1,385 @@
+<svg version="1.1" baseProfile="full" width="3766.0" height="725.0" viewBox="0 0 3766 725" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+<desc >#.interface: fill=lightblue
+#.enumeration: fill=lightgreen
+#.type: fill=lightgray
+
+[&lt;type&gt;CardComentarioProps|+mensagem: string;+autor: string|]
+[&lt;type&gt;CardPostProps|+post: Post|]
+[CardPostProps]  -  [Post]
+[&lt;type&gt;DomeGalleryProps|+images?: ImageItem\[\];+fit?: number;+fitBasis?: &quot;auto&quot; \| &quot;min&quot; \| &quot;max&quot; \| &quot;width&quot; \| &quot;height&quot;;+minRadius?: number;+maxRadius?: number;+padFactor?: number;+overlayBlurColor?: string;+maxVerticalRotationDeg?: number;+dragSensitivity?: number;+enlargeTransitionMs?: number;+segments?: number;+dragDampening?: number;+openedImageWidth?: string;+openedImageHeight?: string;+imageBorderRadius?: string;+openedImageBorderRadius?: string;+grayscale?: boolean|]
+[&lt;type&gt;ItemDef|+src: string;+alt: string;+x: number;+y: number;+sizeX: number;+sizeY: number|]
+[&lt;type&gt;FormPublicarProps|+onPublicar: (post: Post) =&gt; void|]
+[&lt;type&gt;SideBarComentariosProps|+postId: number|]
+[&lt;type&gt;Comentario|+id: number;+publicacao: number;+mensagem: string;+publicado_em: string;+autor: { id: number; username: string; nome: string; }|]
+[&lt;type&gt;Autor|+id: number;+username: string;+nome: string|]
+[&lt;type&gt;Post|+id: number;+titulo: string;+descricao: string;+imagem?: string;+autor: Autor;+publicado_em: string|]
+[Post]  -  [Autor]
+[CadastroService||+cadastrarUsuario(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;]
+[ComentarioService||+cadastrarComentario(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;;+getAllComentarios(): Promise&lt;any&gt;]
+[LoginService||+logarUsuario(): Promise&lt;any&gt;]
+[PublicarService||+publicar(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;;+getAllPosts(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;;+deletePost(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;]</desc>
+<g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="12pt" font-family="Helvetica" font-weight="normal" font-style="normal">
+<g font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" stroke-width="3.0" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+<g stroke="transparent" fill="transparent">
+<rect x="0.0" y="0.0" height="725.0" width="3766.0" stroke="none"></rect>
+</g>
+<g transform="translate(8, 8)" fill="#33322E">
+<g transform="translate(20, 20)" fill="#33322E" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal">
+<path d="M298.5 201.5 L298.5 351 L298.5 371 L298.5 371.0 " fill="none"></path>
+<path d="M298.5 524.0 L298.5 544 L298.5 564 L298.5 564.0 " fill="none"></path>
+<g data-name="CardComentarioProps">
+<g fill="lightgray" stroke="#33322E" data-name="CardComentarioProps">
+<rect x="0.0" y="121.5" height="88.0" width="191.0" data-name="CardComentarioProps"></rect>
+<path d="M0.0 153.5 L191.0 153.5" fill="none" data-name="CardComentarioProps"></path>
+<path d="M0.0 201.5 L191.0 201.5" fill="none" data-name="CardComentarioProps"></path>
+</g>
+<g transform="translate(0, 121.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CardComentarioProps" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="CardComentarioProps" data-compartment="0">
+<a id="..\src\components\CardComentario.ts.CardComentarioProps" xlink:href="..\src\components\CardComentario.ts"><text x="87.5" y="14.1" stroke="none" text-anchor="middle" data-name="CardComentarioProps" data-compartment="0">CardComentarioProps</text></a>
+
+</g>
+</g>
+<g transform="translate(0, 153.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CardComentarioProps" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="CardComentarioProps" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="CardComentarioProps" data-compartment="1">+mensagem: string</text>
+<text x="0.0" y="30.3" stroke="none" data-name="CardComentarioProps" data-compartment="1">+autor: string</text>
+
+</g>
+</g>
+<g transform="translate(0, 201.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CardComentarioProps" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="CardComentarioProps" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="CardPostProps">
+<g fill="lightgray" stroke="#33322E" data-name="CardPostProps">
+<rect x="231.0" y="129.5" height="72.0" width="135.0" data-name="CardPostProps"></rect>
+<path d="M231.0 161.5 L366.0 161.5" fill="none" data-name="CardPostProps"></path>
+<path d="M231.0 193.5 L366.0 193.5" fill="none" data-name="CardPostProps"></path>
+</g>
+<g transform="translate(231, 129.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CardPostProps" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="CardPostProps" data-compartment="0">
+<a id="..\src\components\CardPost.ts.CardPostProps" xlink:href="..\src\components\CardPost.ts"><text x="59.5" y="14.1" stroke="none" text-anchor="middle" data-name="CardPostProps" data-compartment="0">CardPostProps</text></a>
+
+</g>
+</g>
+<g transform="translate(231, 161.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CardPostProps" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="CardPostProps" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="CardPostProps" data-compartment="1">+post: Post</text>
+
+</g>
+</g>
+<g transform="translate(231, 193.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CardPostProps" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="CardPostProps" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="Post">
+<g fill="lightgray" stroke="#33322E" data-name="Post">
+<rect x="203.0" y="371.0" height="153.0" width="191.0" data-name="Post"></rect>
+<path d="M203.0 403.0 L394.0 403.0" fill="none" data-name="Post"></path>
+<path d="M203.0 516.0 L394.0 516.0" fill="none" data-name="Post"></path>
+</g>
+<g transform="translate(203, 371)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Post" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Post" data-compartment="0">
+<a id="..\src\pages\Home\index.ts.Post" xlink:href="..\src\pages\Home\index.ts"><text x="87.5" y="14.1" stroke="none" text-anchor="middle" data-name="Post" data-compartment="0">Post</text></a>
+
+</g>
+</g>
+<g transform="translate(203, 403)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Post" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Post" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="Post" data-compartment="1">+id: number</text>
+<text x="0.0" y="30.3" stroke="none" data-name="Post" data-compartment="1">+titulo: string</text>
+<text x="0.0" y="46.5" stroke="none" data-name="Post" data-compartment="1">+descricao: string</text>
+<text x="0.0" y="62.7" stroke="none" data-name="Post" data-compartment="1">+imagem?: string</text>
+<text x="0.0" y="78.9" stroke="none" data-name="Post" data-compartment="1">+autor: Autor</text>
+<text x="0.0" y="95.1" stroke="none" data-name="Post" data-compartment="1">+publicado_em: string</text>
+
+</g>
+</g>
+<g transform="translate(203, 516)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Post" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="Post" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="DomeGalleryProps">
+<g fill="lightgray" stroke="#33322E" data-name="DomeGalleryProps">
+<rect x="406.0" y="0.0" height="331.0" width="409.0" data-name="DomeGalleryProps"></rect>
+<path d="M406.0 32.0 L815.0 32.0" fill="none" data-name="DomeGalleryProps"></path>
+<path d="M406.0 323.0 L815.0 323.0" fill="none" data-name="DomeGalleryProps"></path>
+</g>
+<g transform="translate(406, 0)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="DomeGalleryProps" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="DomeGalleryProps" data-compartment="0">
+<a id="..\src\components\DomeGallery.ts.DomeGalleryProps" xlink:href="..\src\components\DomeGallery.ts"><text x="196.5" y="14.1" stroke="none" text-anchor="middle" data-name="DomeGalleryProps" data-compartment="0">DomeGalleryProps</text></a>
+
+</g>
+</g>
+<g transform="translate(406, 32)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="DomeGalleryProps" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="DomeGalleryProps" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+images?: ImageItem[]</text>
+<text x="0.0" y="30.3" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+fit?: number</text>
+<text x="0.0" y="46.5" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+fitBasis?: &quot;auto&quot; | &quot;min&quot; | &quot;max&quot; | &quot;width&quot; | &quot;height&quot;</text>
+<text x="0.0" y="62.7" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+minRadius?: number</text>
+<text x="0.0" y="78.9" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+maxRadius?: number</text>
+<text x="0.0" y="95.1" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+padFactor?: number</text>
+<text x="0.0" y="111.3" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+overlayBlurColor?: string</text>
+<text x="0.0" y="127.5" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+maxVerticalRotationDeg?: number</text>
+<text x="0.0" y="143.7" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+dragSensitivity?: number</text>
+<text x="0.0" y="159.9" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+enlargeTransitionMs?: number</text>
+<text x="0.0" y="176.1" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+segments?: number</text>
+<text x="0.0" y="192.3" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+dragDampening?: number</text>
+<text x="0.0" y="208.5" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+openedImageWidth?: string</text>
+<text x="0.0" y="224.7" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+openedImageHeight?: string</text>
+<text x="0.0" y="240.9" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+imageBorderRadius?: string</text>
+<text x="0.0" y="257.1" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+openedImageBorderRadius?: string</text>
+<text x="0.0" y="273.3" stroke="none" data-name="DomeGalleryProps" data-compartment="1">+grayscale?: boolean</text>
+
+</g>
+</g>
+<g transform="translate(406, 323)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="DomeGalleryProps" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="DomeGalleryProps" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="ItemDef">
+<g fill="lightgray" stroke="#33322E" data-name="ItemDef">
+<rect x="855.0" y="89.0" height="153.0" width="139.0" data-name="ItemDef"></rect>
+<path d="M855.0 121.0 L994.0 121.0" fill="none" data-name="ItemDef"></path>
+<path d="M855.0 234.0 L994.0 234.0" fill="none" data-name="ItemDef"></path>
+</g>
+<g transform="translate(855, 89)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="ItemDef" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="ItemDef" data-compartment="0">
+<a id="..\src\components\DomeGallery.ts.ItemDef" xlink:href="..\src\components\DomeGallery.ts"><text x="61.5" y="14.1" stroke="none" text-anchor="middle" data-name="ItemDef" data-compartment="0">ItemDef</text></a>
+
+</g>
+</g>
+<g transform="translate(855, 121)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="ItemDef" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="ItemDef" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="ItemDef" data-compartment="1">+src: string</text>
+<text x="0.0" y="30.3" stroke="none" data-name="ItemDef" data-compartment="1">+alt: string</text>
+<text x="0.0" y="46.5" stroke="none" data-name="ItemDef" data-compartment="1">+x: number</text>
+<text x="0.0" y="62.7" stroke="none" data-name="ItemDef" data-compartment="1">+y: number</text>
+<text x="0.0" y="78.9" stroke="none" data-name="ItemDef" data-compartment="1">+sizeX: number</text>
+<text x="0.0" y="95.1" stroke="none" data-name="ItemDef" data-compartment="1">+sizeY: number</text>
+
+</g>
+</g>
+<g transform="translate(855, 234)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="ItemDef" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="ItemDef" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="FormPublicarProps">
+<g fill="lightgray" stroke="#33322E" data-name="FormPublicarProps">
+<rect x="1034.0" y="129.5" height="72.0" width="274.0" data-name="FormPublicarProps"></rect>
+<path d="M1034.0 161.5 L1308.0 161.5" fill="none" data-name="FormPublicarProps"></path>
+<path d="M1034.0 193.5 L1308.0 193.5" fill="none" data-name="FormPublicarProps"></path>
+</g>
+<g transform="translate(1034, 129.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="FormPublicarProps" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="FormPublicarProps" data-compartment="0">
+<a id="..\src\components\FormPublicar.ts.FormPublicarProps" xlink:href="..\src\components\FormPublicar.ts"><text x="129.0" y="14.1" stroke="none" text-anchor="middle" data-name="FormPublicarProps" data-compartment="0">FormPublicarProps</text></a>
+
+</g>
+</g>
+<g transform="translate(1034, 161.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="FormPublicarProps" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="FormPublicarProps" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="FormPublicarProps" data-compartment="1">+onPublicar: (post: Post) =&gt; void</text>
+
+</g>
+</g>
+<g transform="translate(1034, 193.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="FormPublicarProps" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="FormPublicarProps" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="SideBarComentariosProps">
+<g fill="lightgray" stroke="#33322E" data-name="SideBarComentariosProps">
+<rect x="1348.0" y="129.5" height="72.0" width="224.0" data-name="SideBarComentariosProps"></rect>
+<path d="M1348.0 161.5 L1572.0 161.5" fill="none" data-name="SideBarComentariosProps"></path>
+<path d="M1348.0 193.5 L1572.0 193.5" fill="none" data-name="SideBarComentariosProps"></path>
+</g>
+<g transform="translate(1348, 129.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="SideBarComentariosProps" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SideBarComentariosProps" data-compartment="0">
+<a id="..\src\components\SideBarComentarios.ts.SideBarComentariosProps" xlink:href="..\src\components\SideBarComentarios.ts"><text x="104.0" y="14.1" stroke="none" text-anchor="middle" data-name="SideBarComentariosProps" data-compartment="0">SideBarComentariosProps</text></a>
+
+</g>
+</g>
+<g transform="translate(1348, 161.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="SideBarComentariosProps" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SideBarComentariosProps" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="SideBarComentariosProps" data-compartment="1">+postId: number</text>
+
+</g>
+</g>
+<g transform="translate(1348, 193.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="SideBarComentariosProps" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="SideBarComentariosProps" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="Comentario">
+<g fill="lightgray" stroke="#33322E" data-name="Comentario">
+<rect x="1612.0" y="72.5" height="186.0" width="191.0" data-name="Comentario"></rect>
+<path d="M1612.0 104.5 L1803.0 104.5" fill="none" data-name="Comentario"></path>
+<path d="M1612.0 250.5 L1803.0 250.5" fill="none" data-name="Comentario"></path>
+</g>
+<g transform="translate(1612, 72.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Comentario" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Comentario" data-compartment="0">
+<a id="..\src\components\SideBarComentarios.ts.Comentario" xlink:href="..\src\components\SideBarComentarios.ts"><text x="87.5" y="14.1" stroke="none" text-anchor="middle" data-name="Comentario" data-compartment="0">Comentario</text></a>
+
+</g>
+</g>
+<g transform="translate(1612, 104.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Comentario" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Comentario" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="Comentario" data-compartment="1">+id: number</text>
+<text x="0.0" y="30.3" stroke="none" data-name="Comentario" data-compartment="1">+publicacao: number</text>
+<text x="0.0" y="46.5" stroke="none" data-name="Comentario" data-compartment="1">+mensagem: string</text>
+<text x="0.0" y="62.7" stroke="none" data-name="Comentario" data-compartment="1">+publicado_em: string</text>
+<text x="0.0" y="78.9" stroke="none" data-name="Comentario" data-compartment="1">+autor: { id: number</text>
+<text x="0.0" y="95.1" stroke="none" data-name="Comentario" data-compartment="1">username: string</text>
+<text x="0.0" y="111.3" stroke="none" data-name="Comentario" data-compartment="1">nome: string</text>
+<text x="0.0" y="127.5" stroke="none" data-name="Comentario" data-compartment="1">}</text>
+
+</g>
+</g>
+<g transform="translate(1612, 250.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Comentario" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="Comentario" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="Autor">
+<g fill="lightgray" stroke="#33322E" data-name="Autor">
+<rect x="219.0" y="564.0" height="105.0" width="159.0" data-name="Autor"></rect>
+<path d="M219.0 596.0 L378.0 596.0" fill="none" data-name="Autor"></path>
+<path d="M219.0 661.0 L378.0 661.0" fill="none" data-name="Autor"></path>
+</g>
+<g transform="translate(219, 564)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Autor" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Autor" data-compartment="0">
+<a id="..\src\pages\Home\index.ts.Autor" xlink:href="..\src\pages\Home\index.ts"><text x="71.5" y="14.1" stroke="none" text-anchor="middle" data-name="Autor" data-compartment="0">Autor</text></a>
+
+</g>
+</g>
+<g transform="translate(219, 596)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Autor" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Autor" data-compartment="1">
+<text x="0.0" y="14.1" stroke="none" data-name="Autor" data-compartment="1">+id: number</text>
+<text x="0.0" y="30.3" stroke="none" data-name="Autor" data-compartment="1">+username: string</text>
+<text x="0.0" y="46.5" stroke="none" data-name="Autor" data-compartment="1">+nome: string</text>
+
+</g>
+</g>
+<g transform="translate(219, 661)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Autor" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" data-name="Autor" data-compartment="2">
+
+</g>
+</g>
+</g>
+<g data-name="CadastroService">
+<g fill="#eee8d5" stroke="#33322E" data-name="CadastroService">
+<rect x="1843.0" y="129.5" height="72.0" width="501.0" data-name="CadastroService"></rect>
+<path d="M1843.0 161.5 L2344.0 161.5" fill="none" data-name="CadastroService"></path>
+<path d="M1843.0 169.5 L2344.0 169.5" fill="none" data-name="CadastroService"></path>
+</g>
+<g transform="translate(1843, 129.5)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="CadastroService" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="CadastroService" data-compartment="0">
+<a id="..\src\services\models\CadastroService.ts.CadastroService" xlink:href="..\src\services\models\CadastroService.ts"><text x="242.5" y="14.1" stroke="none" text-anchor="middle" data-name="CadastroService" data-compartment="0">CadastroService</text></a>
+
+</g>
+</g>
+<g transform="translate(1843, 161.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CadastroService" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" data-name="CadastroService" data-compartment="1">
+
+</g>
+</g>
+<g transform="translate(1843, 169.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CadastroService" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="CadastroService" data-compartment="2">
+<text x="0.0" y="14.1" stroke="none" data-name="CadastroService" data-compartment="2">+cadastrarUsuario(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;</text>
+
+</g>
+</g>
+</g>
+<g data-name="ComentarioService">
+<g fill="#eee8d5" stroke="#33322E" data-name="ComentarioService">
+<rect x="2384.0" y="121.5" height="88.0" width="531.0" data-name="ComentarioService"></rect>
+<path d="M2384.0 153.5 L2915.0 153.5" fill="none" data-name="ComentarioService"></path>
+<path d="M2384.0 161.5 L2915.0 161.5" fill="none" data-name="ComentarioService"></path>
+</g>
+<g transform="translate(2384, 121.5)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="ComentarioService" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="ComentarioService" data-compartment="0">
+<a id="..\src\services\models\ComentarioService.ts.ComentarioService" xlink:href="..\src\services\models\ComentarioService.ts"><text x="257.5" y="14.1" stroke="none" text-anchor="middle" data-name="ComentarioService" data-compartment="0">ComentarioService</text></a>
+
+</g>
+</g>
+<g transform="translate(2384, 153.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="ComentarioService" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" data-name="ComentarioService" data-compartment="1">
+
+</g>
+</g>
+<g transform="translate(2384, 161.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="ComentarioService" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="ComentarioService" data-compartment="2">
+<text x="0.0" y="14.1" stroke="none" data-name="ComentarioService" data-compartment="2">+cadastrarComentario(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;</text>
+<text x="0.0" y="30.3" stroke="none" data-name="ComentarioService" data-compartment="2">+getAllComentarios(): Promise&lt;any&gt;</text>
+
+</g>
+</g>
+</g>
+<g data-name="LoginService">
+<g fill="#eee8d5" stroke="#33322E" data-name="LoginService">
+<rect x="2955.0" y="129.5" height="72.0" width="262.0" data-name="LoginService"></rect>
+<path d="M2955.0 161.5 L3217.0 161.5" fill="none" data-name="LoginService"></path>
+<path d="M2955.0 169.5 L3217.0 169.5" fill="none" data-name="LoginService"></path>
+</g>
+<g transform="translate(2955, 129.5)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="LoginService" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="LoginService" data-compartment="0">
+<a id="..\src\services\models\LoginService.ts.LoginService" xlink:href="..\src\services\models\LoginService.ts"><text x="123.0" y="14.1" stroke="none" text-anchor="middle" data-name="LoginService" data-compartment="0">LoginService</text></a>
+
+</g>
+</g>
+<g transform="translate(2955, 161.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="LoginService" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" data-name="LoginService" data-compartment="1">
+
+</g>
+</g>
+<g transform="translate(2955, 169.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="LoginService" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="LoginService" data-compartment="2">
+<text x="0.0" y="14.1" stroke="none" data-name="LoginService" data-compartment="2">+logarUsuario(): Promise&lt;any&gt;</text>
+
+</g>
+</g>
+</g>
+<g data-name="PublicarService">
+<g fill="#eee8d5" stroke="#33322E" data-name="PublicarService">
+<rect x="3257.0" y="113.0" height="105.0" width="453.0" data-name="PublicarService"></rect>
+<path d="M3257.0 145.0 L3710.0 145.0" fill="none" data-name="PublicarService"></path>
+<path d="M3257.0 153.0 L3710.0 153.0" fill="none" data-name="PublicarService"></path>
+</g>
+<g transform="translate(3257, 113)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="PublicarService" data-compartment="0">
+<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="PublicarService" data-compartment="0">
+<a id="..\src\services\models\PublicarService.ts.PublicarService" xlink:href="..\src\services\models\PublicarService.ts"><text x="218.5" y="14.1" stroke="none" text-anchor="middle" data-name="PublicarService" data-compartment="0">PublicarService</text></a>
+
+</g>
+</g>
+<g transform="translate(3257, 145)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="PublicarService" data-compartment="1">
+<g transform="translate(8, 8)" fill="#33322E" data-name="PublicarService" data-compartment="1">
+
+</g>
+</g>
+<g transform="translate(3257, 153)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="PublicarService" data-compartment="2">
+<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PublicarService" data-compartment="2">
+<text x="0.0" y="14.1" stroke="none" data-name="PublicarService" data-compartment="2">+publicar(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;</text>
+<text x="0.0" y="30.3" stroke="none" data-name="PublicarService" data-compartment="2">+getAllPosts(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;</text>
+<text x="0.0" y="46.5" stroke="none" data-name="PublicarService" data-compartment="2">+deletePost(): Promise&lt;AxiosResponse&lt;any, any, {}&gt;&gt;</text>
+
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>
