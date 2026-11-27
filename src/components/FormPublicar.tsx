@@ -31,11 +31,7 @@ export default function FormPublicar({ onPublicar }: FormPublicarProps) {
 				imagem: data.imagemURL,
 			};
 
-			const novoPost = await PublicarService.publicar(
-				payload.titulo,
-				payload.descricao,
-				payload.imagem,
-			);
+			const novoPost = await PublicarService.publicar(payload);
 
 			onPublicar(novoPost.data);
 		} catch (error) {

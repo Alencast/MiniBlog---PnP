@@ -42,7 +42,7 @@ export default function FormLogin() {
 				password: data.senha,
 			};
 
-			await LoginService.logarUsuario(payload.username, payload.password);
+			await LoginService.logarUsuario(payload);
 
 			navigate("/home");
 		} catch (error: any) {

@@ -1,11 +1,9 @@
+import type { LoginUsuarioDTO } from "../../dtos/LoginUsuarioDTO";
 import { axiosPublic } from "../commom/axiosInstance";
 
 class LoginService {
-	async logarUsuario(username: string, password: string) {
-		const response = await axiosPublic.post("/login/", {
-			username,
-			password,
-		});
+	async logarUsuario(dados: LoginUsuarioDTO) {
+		const response = await axiosPublic.post("/login/", dados);
 
 		localStorage.setItem("access", response.data.access);
 		localStorage.setItem("refresh", response.data.refresh);

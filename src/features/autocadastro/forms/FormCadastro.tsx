@@ -45,11 +45,7 @@ export default function FormCadastro() {
 				nome: data.nome,
 				senha: data.senha,
 			};
-			await CadastroService.cadastrarUsuario(
-				payload.username,
-				payload.nome,
-				payload.senha,
-			);
+			await CadastroService.cadastrarUsuario(payload);
 			setTituloMensagem("Sucesso.");
 			setStatusMensagem("success");
 			setTextoMensagem("Seu cadastro foi concluído");

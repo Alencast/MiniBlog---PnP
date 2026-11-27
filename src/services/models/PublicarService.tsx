@@ -1,14 +1,15 @@
+import type { CriarPublicacaoDTO } from "../../dtos/CriarPublicacaoDTO";
 import axiosInstance from "../commom/axiosInstance";
 
 class PublicarService {
-	async publicar(titulo: string, descricao: string, imagem: File | null) {
+	async publicar(dados: CriarPublicacaoDTO) {
 		const formData = new FormData();
 
-		formData.append("titulo", titulo);
-		formData.append("descricao", descricao);
+		formData.append("titulo", dados.titulo);
+		formData.append("descricao", dados.descricao);
 
-		if (imagem) {
-			formData.append("imagem", imagem);
+		if (dados.imagem) {
+			formData.append("imagem", dados.imagem);
 		}
 		const response = await axiosInstance.post("/publicacao/", formData);
 

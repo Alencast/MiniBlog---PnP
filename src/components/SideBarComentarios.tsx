@@ -5,20 +5,13 @@ import { Controller, useForm } from "react-hook-form";
 import CardComentario from "./CardComentario";
 import { useEffect, useState } from "react";
 import ComentarioService from "../services/models/ComentarioService";
+import type { Comentario } from "../models/Comentario";
 
 type SideBarComentariosProps = {
 	postId: number;
 };
-type Comentario = {
-	id: number;
-	publicacao: number;
-	mensagem: string;
-	publicado_em: string;
-	autor: {
-		id: number;
-		username: string;
-		nome: string;
-	};
+type ComentarioFormData = {
+	comentario: string;
 };
 const schema = yup.object().shape({
 	comentario: yup
@@ -47,12 +40,12 @@ export default function SideBarComentarios({
 
 	// const nomeUsuario = usuario ? JSON.parse(usuario).nome : "Usuário";
 
-	async function dataHandler(data: any) {
+	async function dataHandler(data: ComentarioFormData) {
 		try {
-			const response = await ComentarioService.cadastrarComentario(
-				postId,
-				data.comentario,
-			);
+			const response = await ComentarioService.cadastrarComentario({
+				publicacao: postId,
+				mensagem: data.comentario,
+			});
 
 			adicionarComentario(response.data);
 			reset();
@@ -68,7 +61,7 @@ export default function SideBarComentarios({
 			console.log(coments);
 
 			const comentariosDoPost = coments.filter(
-				(coment: Comentario) => coment.publicacao === postId,
+				(coment) => coment.publicacao.id === postId,
 			);
 			setComentarios(comentariosDoPost);
 		}
