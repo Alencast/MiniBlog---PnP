@@ -10,7 +10,7 @@ jobs:
 
         steps:
             - name: Checkout
-               uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+              uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
             - name: Setup pnpm
               uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
@@ -31,3 +31,14 @@ jobs:
 
             - name: Build
               run: pnpm build
+
+            - name: Generate UML
+              run: pnpm uml:generate
+
+            - name: Upload UML
+              uses: actions/upload-artifact@v4
+              with:
+                  name: diagrama-uml
+                  path: |
+                      docs/diagrama.svg
+                      docs/diagrama.png
