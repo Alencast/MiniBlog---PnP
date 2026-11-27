@@ -22,11 +22,17 @@ const entrada = await Promise.all(
 );
 
 const processo = spawn(
-    "pnpm",
-    ["exec", "tsdiagram", "render", "-o", "docs/diagrama.svg", "--png", "--force"],
+    process.execPath,
+    [
+        "node_modules/tsdiagram/dist/cli.js",
+        "render",
+        "-o",
+        "docs/diagrama.svg",
+        "--png",
+        "--force",
+    ],
     {
         stdio: ["pipe", "inherit", "inherit"],
-        shell: process.platform === "win32",
     }
 );
 
